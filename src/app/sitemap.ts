@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://marquisebarber.gr' // Placeholder
+    const baseUrl = 'https://www.ebarber.gr/barbershops/marquise-barber-shop'
     return [
         {
             url: baseUrl,
