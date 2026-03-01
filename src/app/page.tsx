@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import Image from "next/image";
 import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { ServiceCard } from "@/components/ServiceCard";
@@ -75,10 +76,12 @@ export default function Home() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
           {[1, 2, 3, 4].map((i) => (
             <div key={i} className="aspect-square relative overflow-hidden group rounded-[2rem] shadow-lg">
-              <img
+              <Image
                 src={`https://images.unsplash.com/photo-1599351431247-f132f017154c?q=80&w=687&auto=format&fit=crop&sig=${i}`}
                 alt={`Premium υπηρεσίες ανδρικής περιποίησης και κουρέματος στο Marquise Barber Shop Κηφισιά - Στιγμιότυπο ${i}`}
-                className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-1000"
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover group-hover:scale-110 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-brand-green/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <Link href="/gallery" className="text-white bg-brand-charcoal/80 p-3 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500">

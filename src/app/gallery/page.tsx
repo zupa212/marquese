@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import Image from "next/image";
 import { Section } from "@/components/Section";
 import { ExternalLink, Instagram, ThumbsUp } from "lucide-react";
 import { buttonVariants } from "@/components/ui/Button";
@@ -33,11 +34,15 @@ export default function GalleryPage() {
             <Section rounded>
                 <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                     {images.map((img, i) => (
-                        <div key={i} className="relative group overflow-hidden rounded-[2rem] break-inside-avoid">
-                            <img
+                        <div key={i} className="relative group overflow-hidden rounded-[2rem] break-inside-avoid shadow-lg min-h-[100px]">
+                            <Image
                                 src={img.src}
                                 alt={`Κούρεμα και περιποίηση ανδρών στην Κηφισιά: ${img.title} από το Marquise Barber Shop`}
-                                className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-110"
+                                width={800}
+                                height={800}
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                style={{ width: '100%', height: 'auto' }}
+                                className="grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-brand-green/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">
                                 <h3 className="text-white font-serif text-2xl font-bold mb-2">{img.title}</h3>

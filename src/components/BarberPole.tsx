@@ -10,14 +10,8 @@ export const BarberPole = ({ className }: { className?: string }) => {
             <div className="absolute inset-0 z-20 bg-gradient-to-r from-white/30 via-transparent to-black/10 pointer-events-none"></div>
 
             {/* Rotating Stripes */}
-            <motion.div
-                className="absolute inset-0 z-10 flex flex-col"
-                animate={{ y: ["0%", "-50%"] }}
-                transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear"
-                }}
+            <div
+                className="absolute inset-0 z-10 flex flex-col animate-[barberScroll_3s_linear_infinite]"
             >
                 {[...Array(12)].map((_, i) => (
                     <React.Fragment key={i}>
@@ -27,7 +21,7 @@ export const BarberPole = ({ className }: { className?: string }) => {
                         <div className="h-8 w-full bg-white skew-y-12"></div>
                     </React.Fragment>
                 ))}
-            </motion.div>
+            </div>
 
             {/* Silver Caps */}
             <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-gray-300 to-gray-500 z-30 rounded-t-full shadow-inner"></div>

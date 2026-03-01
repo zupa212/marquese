@@ -8,6 +8,18 @@
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui;
   --font-serif: var(--font-playfair), ui-serif, Georgia;
+
+  --animate-barber-scroll: barberScroll 3s linear infinite;
+
+  @keyframes barberScroll {
+    0% {
+      transform: translateY(0%);
+    }
+
+    100% {
+      transform: translateY(-50%);
+    }
+  }
 }
 
 :root {
