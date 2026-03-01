@@ -1,4 +1,4 @@
-import { PhotoSphereViewer } from './PhotoSphereViewer';
+import { PanoramicViewer } from './PanoramicViewer';
 import { Section } from '../../Section';
 
 interface VirtualTourProps {
@@ -14,8 +14,8 @@ export const VirtualTour = ({
 }: VirtualTourProps) => {
     return (
         <Section id="virtual-tour" className="relative group max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-            <div className="w-full aspect-square md:aspect-[21/9] lg:aspect-[21/9] rounded-3xl overflow-hidden border-2 border-brand-charcoal/10 shadow-2xl relative bg-brand-charcoal/5">
-                <PhotoSphereViewer src={src} alt={title} />
+            <div className="w-full aspect-square md:aspect-square lg:aspect-[4/5] min-h-[60vh] lg:min-h-[85vh] rounded-3xl overflow-hidden border-2 border-brand-charcoal/10 shadow-2xl relative bg-brand-charcoal/5 cursor-crosshair">
+                <PanoramicViewer src={src} alt={title} />
             </div>
         </Section>
     );
