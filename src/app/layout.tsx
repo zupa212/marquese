@@ -37,7 +37,7 @@ export default function RootLayout({
       "addressCountry": "GR"
     },
     "telephone": BUSINESS_INFO.phone,
-    "url": "https://www.ebarber.gr/barbershops/marquise-barber-shop",
+    "url": "https://www.marquisebarbershop.gr",
     "openingHoursSpecification": BUSINESS_INFO.hours.filter(h => h.time !== 'Κλειστά').map(h => {
       const [open, close] = h.time.split('–');
       return {

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://www.ebarber.gr/barbershops/marquise-barber-shop'
+    const baseUrl = 'https://www.marquisebarbershop.gr'
     return [
         {
             url: baseUrl,

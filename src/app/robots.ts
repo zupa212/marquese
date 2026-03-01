@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: '*',
             allow: '/',
         },
-        sitemap: 'https://www.ebarber.gr/barbershops/marquise-barber-shop/sitemap.xml',
+        sitemap: 'https://www.marquisebarbershop.gr/sitemap.xml',
     }
 }
