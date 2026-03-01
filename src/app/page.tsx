@@ -19,7 +19,7 @@ export default function Home() {
       <Hero />
 
       {/* 360 Virtual Tour */}
-      <VirtualTour src="/images/360/shop-interior.jpg" />
+      <VirtualTour src="/images/IMG_20260226_202229_00_041.jpg" />
 
       {/* Services Preview - Rounded Island */}
       <Section id="services" rounded>
