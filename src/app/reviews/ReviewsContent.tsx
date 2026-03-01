@@ -22,7 +22,7 @@ export const ReviewsContent = () => {
                     <div className="flex justify-center items-center space-x-2 mb-4">
                         {[1, 2, 3, 4, 5].map(i => <Star key={i} size={24} className="fill-brand-gold text-brand-gold" />)}
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-serif font-bold mb-4">Κριτικές Κουρείου - Marquise</h1>
+                    <h1 className="text-5xl md:text-7xl font-serif font-bold mb-4">Κριτικές Πελατών — Marquise Κηφισιά</h1>
                     <p className="max-w-xl mx-auto text-brand-green font-bold uppercase tracking-[0.3em] text-sm">
                         Η Εμπιστοσύνη σας είναι η ανταμοιβή μας
                     </p>

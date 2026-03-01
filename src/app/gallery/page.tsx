@@ -4,10 +4,23 @@ import { Section } from "@/components/Section";
 import { ExternalLink, Instagram, ThumbsUp } from "lucide-react";
 import { buttonVariants } from "@/components/ui/Button";
 import Link from "next/link";
+import { Metadata } from "next";
 
-export const metadata = {
-    title: "Γκαλερί | Marquise Barber Shop",
-    description: "Δείτε φωτογραφίες από το χώρο μας και τις δουλειές μας στην Κηφισιά.",
+export const metadata: Metadata = {
+    title: "Γκαλερί Κουρεμάτων & Ανδρικής Περιποίησης Κηφισιά",
+    description: "Δείτε φωτογραφίες από fade κουρέματα, παραδοσιακό ξύρισμα, beard grooming και τον premium χώρο του Marquise Barber Shop στην Κηφισιά.",
+    openGraph: {
+        title: "Gallery | Marquise Barber Shop Κηφισιά",
+        description: "Fade, beard grooming, παραδοσιακό ξύρισμα — δείτε δείγματα δουλειάς μας.",
+        url: "https://www.marquisebarbershop.gr/gallery",
+    },
+    twitter: {
+        title: "Gallery | Marquise Barber Shop Κηφισιά",
+        description: "Fade, beard grooming, παραδοσιακό ξύρισμα — δείτε δείγματα δουλειάς μας.",
+    },
+    alternates: {
+        canonical: "https://www.marquisebarbershop.gr/gallery",
+    },
 };
 
 export default function GalleryPage() {
@@ -24,7 +37,7 @@ export default function GalleryPage() {
         <Layout>
             <div className="pt-32 pb-20 bg-brand-charcoal text-brand-ivory text-center">
                 <div className="container mx-auto px-6">
-                    <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 italic leading-tight">Marquise Gallery — <br className="hidden md:block" /> Premium Κουρέματα</h1>
+                    <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 italic leading-tight">Κουρέματα & Ανδρική Περιποίηση — <br className="hidden md:block" /> Marquise Gallery</h1>
                     <p className="max-w-2xl mx-auto text-brand-ivory/60 text-lg uppercase tracking-widest">
                         Στιγμές στυλ και περιποίησης
                     </p>
