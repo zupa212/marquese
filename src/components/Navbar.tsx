@@ -6,16 +6,18 @@ import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { buttonVariants } from './ui/Button';
 import { BUSINESS_INFO, BOOKING_URL } from '@/lib/constants';
+import { useTrackClick } from '@/hooks/useTrackClick';
 import { cn } from '@/lib/utils';
 
 export const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
+    const track = useTrackClick();
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+            setIsScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -24,84 +26,107 @@ export const Navbar = () => {
     const navLinks = [
         { name: 'Αρχική', href: '/' },
         { name: 'Υπηρεσίες', href: '/services' },
-        { name: 'Γκαλερί', href: '/gallery' },
-        { name: 'Κριτικές', href: '/reviews' },
+        { name: 'Gallery', href: '/gallery' },
+        { name: 'Αξιολογήσεις', href: '/reviews' },
         { name: 'Επικοινωνία', href: '/contact' },
     ];
 
     return (
-        <nav className={cn(
-            "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-            scrolled ? "bg-brand-ivory/95 shadow-md py-3" : "bg-transparent py-5"
-        )}>
-            <div className="container mx-auto px-6 flex justify-between items-center">
-                <Link href="/" className="flex flex-col">
-                    <span className="text-2xl md:text-3xl font-serif font-bold tracking-tighter leading-none text-brand-green">
+        <nav
+            className={cn(
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
+                isScrolled ? "bg-brand-ivory/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent"
+            )}
+        >
+            <div className="container mx-auto flex justify-between items-center">
+                {/* Logo */}
+                <Link href="/" className="flex flex-col group">
+                    <span className={cn(
+                        "font-serif text-2xl font-bold tracking-tighter transition-colors",
+                        (isScrolled || pathname !== '/') ? "text-brand-charcoal" : "text-brand-ivory"
+                    )}>
                         MARQUISE
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.3em] font-sans text-brand-gold font-bold">
+                    <span className={cn(
+                        "text-[10px] uppercase tracking-[0.3em] font-light -mt-1 transition-colors",
+                        (isScrolled || pathname !== '/') ? "text-brand-gold" : "text-brand-gold/80"
+                    )}>
                         Barber Shop
                     </span>
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center space-x-8">
+                <div className="hidden lg:flex items-center space-x-10">
                     {navLinks.map((link) => (
                         <Link
-                            key={link.href}
+                            key={link.name}
                             href={link.href}
                             className={cn(
-                                "text-sm uppercase tracking-widest font-medium transition-colors hover:text-brand-gold",
-                                pathname === link.href ? "text-brand-gold" : "text-brand-charcoal"
+                                "text-sm uppercase tracking-widest font-medium transition-all hover:text-brand-gold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold after:transition-all hover:after:w-full",
+                                (isScrolled || pathname !== '/') ? "text-brand-charcoal" : "text-brand-ivory",
+                                pathname === link.href && "text-brand-gold after:w-full"
                             )}
                         >
                             {link.name}
                         </Link>
                     ))}
+                </div>
+
+                {/* Desktop CTA */}
+                <div className="hidden lg:block">
                     <Link
                         href={BOOKING_URL || BUSINESS_INFO.phoneClick}
-                        className={buttonVariants({ variant: 'gold', size: 'sm', className: 'ml-4' })}
+                        onClick={() => track('booking', 'Navbar CTA')}
+                        className={buttonVariants({
+                            variant: (isScrolled || pathname !== '/') ? 'gold' : 'outline',
+                            size: 'sm',
+                            className: !(isScrolled || pathname !== '/') ? 'border-brand-ivory text-brand-ivory hover:bg-brand-ivory hover:text-brand-charcoal' : ''
+                        })}
                     >
-                        {BOOKING_URL ? "BOOK ONLINE" : "ΚΛΗΣΗ"}
+                        Κλείστε Ραντεβού
                     </Link>
                 </div>
 
-                {/* Mobile Toggle */}
-                <button className="md:hidden text-brand-charcoal" onClick={() => setIsOpen(!isOpen)} aria-label="Menu">
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                {/* Mobile Menu Toggle */}
+                <button
+                    className={cn(
+                        "lg:hidden p-2 transition-colors",
+                        (isScrolled || pathname !== '/') ? "text-brand-charcoal" : "text-brand-ivory"
+                    )}
+                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                >
+                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu Overlay */}
             <div className={cn(
-                "fixed inset-0 bg-brand-ivory z-40 flex flex-col items-center justify-center space-y-8 transition-transform duration-500 ease-in-out md:hidden",
-                isOpen ? "translate-x-0" : "translate-x-full"
+                "fixed inset-0 bg-brand-charcoal z-40 transition-transform duration-500 lg:hidden flex flex-col items-center justify-center space-y-8",
+                isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
             )}>
-                <button className="absolute top-6 right-6 text-brand-charcoal" onClick={() => setIsOpen(false)} aria-label="Close menu">
-                    <X size={32} />
-                </button>
                 {navLinks.map((link) => (
                     <Link
-                        key={link.href}
+                        key={link.name}
                         href={link.href}
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
-                            "text-2xl uppercase tracking-[0.2em] font-serif font-bold",
-                            pathname === link.href ? "text-brand-gold" : "text-brand-charcoal"
+                            "text-2xl font-serif font-bold text-brand-ivory hover:text-brand-gold transition-colors",
+                            pathname === link.href && "text-brand-gold underline underline-offset-8 decoration-1"
                         )}
                     >
                         {link.name}
                     </Link>
                 ))}
-                <div className="pt-8">
-                    <Link
-                        href={BOOKING_URL || BUSINESS_INFO.phoneClick}
-                        onClick={() => setIsOpen(false)}
-                        className={buttonVariants({ variant: 'gold', size: 'lg', className: 'w-64' })}
-                    >
-                        {BOOKING_URL ? "BOOK ONLINE" : "ΚΛΗΣΗ"}
-                    </Link>
-                </div>
+                <Link
+                    href={BOOKING_URL || BUSINESS_INFO.phoneClick}
+                    onClick={() => {
+                        track('booking', 'Mobile Nav CTA');
+                        setIsMobileMenuOpen(false);
+                    }}
+                    className={buttonVariants({ variant: 'gold', size: 'lg', className: 'mt-8' })}
+                >
+                    Κλείστε Ραντεβού
+                </Link>
             </div>
         </nav>
     );

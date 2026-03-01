@@ -1,3 +1,5 @@
+"use client";
+
 import { Layout } from "@/components/Layout";
 import { Section } from "@/components/Section";
 import { Phone, MapPin, Calendar, MessageSquare } from "lucide-react";
@@ -5,13 +7,11 @@ import { BUSINESS_INFO, BOOKING_URL, GOOGLE_MAPS_EMBED_URL, GOOGLE_MAPS_URL } fr
 import { buttonVariants } from "@/components/ui/Button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-
-export const metadata = {
-    title: "Επικοινωνία | Marquise Barber Shop",
-    description: "Επικοινωνήστε μαζί μας για ραντεβού ή πληροφορίες. Βρισκόμαστε στην Παπαδιαμάντη 1, Κηφισιά.",
-};
+import { useTrackClick } from "@/hooks/useTrackClick";
 
 export default function ContactPage() {
+    const track = useTrackClick();
+
     return (
         <Layout>
             <div className="pt-32 pb-20 bg-brand-charcoal text-brand-ivory text-center relative overflow-hidden">
@@ -38,7 +38,13 @@ export default function ContactPage() {
                                     <div>
                                         <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-brand-gold mb-2">Διεύθυνση</h4>
                                         <p className="text-xl font-serif">{BUSINESS_INFO.address}</p>
-                                        <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="text-brand-green font-bold hover:underline inline-flex items-center mt-2 group">
+                                        <a
+                                            href={GOOGLE_MAPS_URL}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => track('directions', 'Contact Page Address')}
+                                            className="text-brand-green font-bold hover:underline inline-flex items-center mt-2 group"
+                                        >
                                             Άνοιγμα στους Χάρτες <Calendar size={14} className="ml-2 group-hover:rotate-12 transition-transform" />
                                         </a>
                                     </div>
@@ -50,7 +56,11 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-brand-gold mb-2">Τηλέφωνο</h4>
-                                        <a href={BUSINESS_INFO.phoneClick} className="text-3xl font-serif font-bold hover:text-brand-green transition-colors">
+                                        <a
+                                            href={BUSINESS_INFO.phoneClick}
+                                            onClick={() => track('call', 'Contact Page Phone')}
+                                            className="text-3xl font-serif font-bold hover:text-brand-green transition-colors"
+                                        >
                                             {BUSINESS_INFO.phone}
                                         </a>
                                     </div>
@@ -99,6 +109,7 @@ export default function ContactPage() {
                             <div className="flex flex-col gap-4 relative z-10">
                                 <Link
                                     href={BOOKING_URL || BUSINESS_INFO.phoneClick}
+                                    onClick={() => track('booking', 'Contact Page CTA')}
                                     className={buttonVariants({ variant: 'gold', size: 'lg' })}
                                 >
                                     {BOOKING_URL ? "Κάντε κράτηση online" : "Κλήση για ραντεβού"}

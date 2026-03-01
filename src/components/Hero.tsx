@@ -7,8 +7,11 @@ import { motion } from 'framer-motion';
 import { buttonVariants } from './ui/Button';
 import { BUSINESS_INFO, BOOKING_URL, GOOGLE_MAPS_URL } from '@/lib/constants';
 import { MapPin, Calendar, Star } from 'lucide-react';
+import { useTrackClick } from '@/hooks/useTrackClick';
 
 export const Hero = () => {
+    const track = useTrackClick();
+
     return (
         <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden">
             {/* Background Image with Overlay */}
@@ -63,6 +66,7 @@ export const Hero = () => {
                     >
                         <Link
                             href={BOOKING_URL || BUSINESS_INFO.phoneClick}
+                            onClick={() => track('booking', 'Hero CTA')}
                             className={buttonVariants({ variant: 'gold', size: 'lg', className: 'group' })}
                         >
                             <Calendar className="mr-2 group-hover:rotate-12 transition-transform" size={20} />
@@ -71,6 +75,7 @@ export const Hero = () => {
                         <Link
                             href={GOOGLE_MAPS_URL}
                             target="_blank"
+                            onClick={() => track('directions', 'Hero Directions')}
                             className={buttonVariants({ variant: 'outline', size: 'lg', className: 'border-brand-ivory text-brand-ivory hover:bg-brand-ivory hover:text-brand-charcoal' })}
                         >
                             <MapPin className="mr-2" size={20} />

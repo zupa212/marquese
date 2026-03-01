@@ -1,4 +1,4 @@
-export const BOOKING_URL = ""; // Set later
+export const BOOKING_URL = "https://www.ebarber.gr/barbershops/marquise-barber-shop/appointments/step1";
 export const GOOGLE_REVIEWS_URL = "https://search.google.com/local/reviews?placeid=ChIJ8_B8j8e9oRQRqEIDw4F7OQE"; // Placeholder ID
 export const GOOGLE_MAPS_URL = "https://www.google.com/maps/dir/?api=1&destination=Παπαδιαμάντη+1+Κηφισιά+145+62";
 export const GOOGLE_MAPS_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141.5!2d23.8!3d38.07!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDA0JzEyLjAiTiAyM8KwNDgnMDAuMCJF!5e0!3m2!1sel!2sgr!4v123456789";

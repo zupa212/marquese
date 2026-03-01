@@ -1,9 +1,14 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Facebook, Instagram, ExternalLink } from 'lucide-react';
 import { BUSINESS_INFO, GOOGLE_MAPS_URL } from '@/lib/constants';
+import { useTrackClick } from '@/hooks/useTrackClick';
 
 export const Footer = () => {
+    const track = useTrackClick();
+
     return (
         <footer className="relative bg-brand-charcoal text-white pt-20 pb-10 overflow-hidden">
             {/* Brick Pattern Background */}
@@ -44,6 +49,7 @@ export const Footer = () => {
                                     href={GOOGLE_MAPS_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    onClick={() => track('directions', 'Footer Address')}
                                     className="text-brand-ivory opacity-80 hover:opacity-100 hover:text-brand-gold transition-all text-sm"
                                 >
                                     {BUSINESS_INFO.address}
@@ -53,6 +59,7 @@ export const Footer = () => {
                                 <Phone className="text-brand-gold flex-shrink-0" size={18} />
                                 <a
                                     href={BUSINESS_INFO.phoneClick}
+                                    onClick={() => track('call', 'Footer Phone')}
                                     className="text-brand-ivory opacity-80 hover:opacity-100 hover:text-brand-gold transition-all text-sm font-medium"
                                 >
                                     {BUSINESS_INFO.phone}
