@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Facebook, Instagram, ExternalLink } from 'lucide-react';
 import { BUSINESS_INFO, GOOGLE_MAPS_URL } from '@/lib/constants';
+import { BarberPole } from './BarberPole';
 import { useTrackClick } from '@/hooks/useTrackClick';
 
 export const Footer = () => {
@@ -17,25 +18,26 @@ export const Footer = () => {
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand Column */}
-                    <div className="flex flex-col space-y-6">
-                        <Link href="/" className="flex flex-col">
-                            <span className="text-3xl font-serif font-bold tracking-tighter text-brand-gold">
+                    <div className="flex flex-col space-y-8 relative">
+                        <Link href="/" className="flex flex-col group">
+                            <span className="text-4xl font-serif font-bold tracking-tighter text-brand-gold group-hover:italic transition-all">
                                 MARQUISE
                             </span>
-                            <span className="text-xs uppercase tracking-[0.3em] font-sans text-brand-ivory opacity-80">
+                            <span className="text-xs uppercase tracking-[0.4em] font-sans text-brand-ivory opacity-80 mt-1">
                                 Barber Shop
                             </span>
                         </Link>
-                        <p className="text-brand-ivory opacity-60 text-sm leading-relaxed max-w-xs">
+                        <p className="text-brand-ivory opacity-60 text-sm leading-relaxed max-w-xs font-light">
                             Premium εμπειρία κουρέματος και περιποίησης στην καρδιά της Κηφισιάς. Εκεί όπου η παράδοση συναντά το σύγχρονο στυλ.
                         </p>
-                        <div className="flex space-x-4">
-                            <Link href="#" className="w-10 h-10 rounded-full border border-brand-gold/30 flex items-center justify-center hover:bg-brand-gold hover:text-brand-charcoal transition-all">
-                                <Instagram size={18} />
+                        <div className="flex space-x-6 items-center">
+                            <Link href="#" className="text-brand-ivory opacity-40 hover:opacity-100 hover:text-brand-gold transition-all">
+                                <Instagram size={22} />
                             </Link>
-                            <Link href="#" className="w-10 h-10 rounded-full border border-brand-gold/30 flex items-center justify-center hover:bg-brand-gold hover:text-brand-charcoal transition-all">
-                                <Facebook size={18} />
+                            <Link href="#" className="text-brand-ivory opacity-40 hover:opacity-100 hover:text-brand-gold transition-all">
+                                <Facebook size={22} />
                             </Link>
+                            <BarberPole className="h-24 w-6 -ml-2" />
                         </div>
                     </div>
 

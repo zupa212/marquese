@@ -1,9 +1,9 @@
 "use client";
 
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { buttonVariants } from './ui/Button';
 import { BUSINESS_INFO, BOOKING_URL, GOOGLE_MAPS_URL } from '@/lib/constants';
 import { MapPin, Calendar, Star } from 'lucide-react';
@@ -11,23 +11,31 @@ import { useTrackClick } from '@/hooks/useTrackClick';
 
 export const Hero = () => {
     const track = useTrackClick();
+    const containerRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end start"]
+    });
+
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
     return (
-        <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden">
-            {/* Background Image with Overlay */}
-            <div className="absolute inset-0 z-0">
+        <section ref={containerRef} className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden">
+            {/* Parallax Background Image */}
+            <motion.div style={{ y }} className="absolute inset-0 z-0">
                 <Image
                     src="/images/hero.png"
                     alt="Marquise Barber Shop Storefront"
                     fill
                     priority
-                    className="object-cover object-center"
+                    className="object-cover object-center scale-110"
                 />
                 <div className="absolute inset-0 hero-overlay z-10"></div>
-            </div>
+            </motion.div>
 
             <div className="container mx-auto px-6 relative z-20 pt-20">
-                <div className="max-w-3xl">
+                <motion.div style={{ opacity }} className="max-w-3xl">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -88,22 +96,22 @@ export const Hero = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, delay: 1 }}
-                        className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-brand-ivory/10 pt-8 max-w-2xl"
+                        className="mt-16 grid grid-cols-2 sm:grid-cols-3 gap-8 border-t border-brand-ivory/10 pt-8 max-w-2xl"
                     >
                         <div className="flex flex-col">
-                            <span className="text-brand-gold font-serif text-2xl font-bold">Κηφισιά</span>
-                            <span className="text-brand-ivory/50 text-xs uppercase tracking-widest">Τοποθεσία</span>
+                            <span className="text-brand-gold font-serif text-xl md:text-2xl font-bold">Κηφισιά</span>
+                            <span className="text-brand-ivory/50 text-[10px] uppercase tracking-widest text-wrap">Τοποθεσία</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-brand-gold font-serif text-2xl font-bold">Online</span>
-                            <span className="text-brand-ivory/50 text-xs uppercase tracking-widest">Booking</span>
+                            <span className="text-brand-gold font-serif text-xl md:text-2xl font-bold">Online</span>
+                            <span className="text-brand-ivory/50 text-[10px] uppercase tracking-widest text-wrap">Booking</span>
                         </div>
-                        <div className="flex flex-col">
-                            <span className="text-brand-gold font-serif text-2xl font-bold">Premium</span>
-                            <span className="text-brand-ivory/50 text-xs uppercase tracking-widest">Experience</span>
+                        <div className="flex flex-col col-span-2 sm:col-span-1 border-t border-brand-ivory/5 sm:border-0 pt-4 sm:pt-0">
+                            <span className="text-brand-gold font-serif text-xl md:text-2xl font-bold">Premium</span>
+                            <span className="text-brand-ivory/50 text-[10px] uppercase tracking-widest text-wrap">Experience</span>
                         </div>
                     </motion.div>
-                </div>
+                </motion.div>
             </div>
 
             {/* Scroll Indicator */}
