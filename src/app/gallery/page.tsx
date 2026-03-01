@@ -23,20 +23,20 @@ export default function GalleryPage() {
         <Layout>
             <div className="pt-32 pb-20 bg-brand-charcoal text-brand-ivory text-center">
                 <div className="container mx-auto px-6">
-                    <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 italic">Γκαλερί</h1>
+                    <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 italic leading-tight">Marquise Gallery — <br className="hidden md:block" /> Premium Κουρέματα</h1>
                     <p className="max-w-2xl mx-auto text-brand-ivory/60 text-lg uppercase tracking-widest">
                         Στιγμές στυλ και περιποίησης
                     </p>
                 </div>
             </div>
 
-            <Section>
+            <Section rounded>
                 <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
                     {images.map((img, i) => (
-                        <div key={i} className="relative group overflow-hidden rounded-sm break-inside-avoid">
+                        <div key={i} className="relative group overflow-hidden rounded-[2rem] break-inside-avoid">
                             <img
                                 src={img.src}
-                                alt={img.title}
+                                alt={`Κούρεμα και περιποίηση ανδρών στην Κηφισιά: ${img.title} από το Marquise Barber Shop`}
                                 className="w-full h-auto grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-brand-green/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center">

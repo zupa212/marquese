@@ -16,14 +16,14 @@ export default function ServicesPage() {
             <div className="pt-32 pb-20 bg-brand-green text-brand-ivory text-center relative overflow-hidden">
                 <div className="absolute inset-0 brick-pattern opacity-5 pointer-events-none"></div>
                 <div className="container mx-auto px-6 relative z-10">
-                    <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 italic">Οι Υπηρεσίες μας</h1>
+                    <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 italic leading-tight">Υπηρεσίες Κουρείου &amp; Περιποίησης</h1>
                     <p className="max-w-2xl mx-auto text-brand-ivory/80 text-lg">
-                        Στο Marquise, κάθε υπηρεσία είναι μια εμπειρία προσαρμοσμένη στις ανάγκες σας. Χρησιμοποιούμε μόνο τα καλύτερα προϊόντα για το τέλειο αποτέλεσμα.
+                        Στο Marquise, κάθε υπηρεσία είναι μια εμπειρία προσαρμοσμένη στις ανάγκες σας. Χρησιμοποιούμε μόνο τα καλύτερα προϊόντα για το τέλειο αποτέλεσμα στην Κηφισιά.
                     </p>
                 </div>
             </div>
 
-            <Section>
+            <Section rounded>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {SERVICES.map((service) => (
                         <div key={service.name} className="group p-8 bg-white border border-brand-charcoal/5 rounded-sm hover:-translate-y-1 transition-all duration-300">

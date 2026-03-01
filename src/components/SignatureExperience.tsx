@@ -26,7 +26,7 @@ export const SignatureExperience = ({ title, description, image, reverse = false
                 <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden group shadow-2xl border border-brand-ivory/10">
                     <Image
                         src={image}
-                        alt={title}
+                        alt={`${title} - Υπηρεσία από το Marquise Barber Shop Κηφισιά`}
                         fill
                         className="object-cover transition-transform duration-1000 group-hover:scale-110"
                     />

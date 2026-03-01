@@ -26,7 +26,7 @@ export const Hero = () => {
             <motion.div style={{ y }} className="absolute inset-0 z-0">
                 <Image
                     src="/images/hero.png"
-                    alt="Marquise Barber Shop Storefront"
+                    alt="Premium Ανδρικό Κουρείο Marquise Barber Shop στην Κηφισιά - Πρόσοψη Καταστήματος"
                     fill
                     priority
                     className="object-cover object-center scale-110"

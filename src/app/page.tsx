@@ -77,7 +77,7 @@ export default function Home() {
             <div key={i} className="aspect-square relative overflow-hidden group rounded-[2rem] shadow-lg">
               <img
                 src={`https://images.unsplash.com/photo-1599351431247-f132f017154c?q=80&w=687&auto=format&fit=crop&sig=${i}`}
-                alt="Gallery item"
+                alt={`Premium υπηρεσίες ανδρικής περιποίησης και κουρέματος στο Marquise Barber Shop Κηφισιά - Στιγμιότυπο ${i}`}
                 className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-brand-green/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
