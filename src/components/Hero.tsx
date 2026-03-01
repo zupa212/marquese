@@ -8,9 +8,11 @@ import { buttonVariants } from './ui/Button';
 import { BUSINESS_INFO, BOOKING_URL, GOOGLE_MAPS_URL } from '@/lib/constants';
 import { MapPin, Calendar, Star } from 'lucide-react';
 import { useTrackClick } from '@/hooks/useTrackClick';
+import { useLanguage } from '@/hooks/useLanguage';
 
 export const Hero = () => {
     const track = useTrackClick();
+    const { t, language } = useLanguage();
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -26,7 +28,7 @@ export const Hero = () => {
             <motion.div style={{ y }} className="absolute inset-0 z-0">
                 <Image
                     src="/images/hero.png"
-                    alt="Premium Ανδρικό Κουρείο Marquise Barber Shop στην Κηφισιά - Πρόσοψη Καταστήματος"
+                    alt={language === 'el' ? "Premium Ανδρικό Κουρείο Marquise Barber Shop στην Κηφισιά - Πρόσοψη Καταστήματος" : "Premium Marquise Barber Shop in Kifisia - Storefront"}
                     fill
                     priority
                     className="object-cover object-center scale-110"
@@ -44,7 +46,7 @@ export const Hero = () => {
                     >
                         <Star className="text-brand-gold fill-brand-gold" size={14} />
                         <span className="text-brand-ivory text-xs font-bold uppercase tracking-widest">
-                            {BUSINESS_INFO.reviewCount} Αξιολογήσεις • 5.0 Αστέρια
+                            {BUSINESS_INFO.reviewCount} {language === 'el' ? 'Αξιολογήσεις' : 'Reviews'} • 5.0 {language === 'el' ? 'Αστέρια' : 'Stars'}
                         </span>
                     </motion.div>
 
@@ -54,7 +56,7 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-brand-ivory leading-[1.1] mb-6"
                     >
-                        Marquise <span className="text-brand-gold">Barber Shop</span> — Premium κουρέματα στην Κηφισιά
+                        {t.hero.title} — <span className="text-brand-gold">{language === 'el' ? 'Premium κουρέματα' : 'Premium cuts'}</span> {language === 'el' ? 'στην Κηφισιά' : 'in Kifisia'}
                     </motion.h1>
 
                     <motion.p
@@ -63,7 +65,7 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-lg md:text-xl text-brand-ivory/80 mb-10 max-w-2xl font-light leading-relaxed"
                     >
-                        Καθαρές γραμμές. Απόλυτη λεπτομέρεια. Premium εμπειρία για τον άνδρα που ξέρει τι θέλει.
+                        {t.hero.subtitle}
                     </motion.p>
 
                     <motion.div
@@ -78,7 +80,7 @@ export const Hero = () => {
                             className={buttonVariants({ variant: 'gold', size: 'lg', className: 'group' })}
                         >
                             <Calendar className="mr-2 group-hover:rotate-12 transition-transform" size={20} />
-                            {BOOKING_URL ? "Κάντε κράτηση online" : "Κλήση για ραντεβού"}
+                            {BOOKING_URL ? (language === 'el' ? "Κάντε κράτηση online" : "Book online") : (language === 'el' ? "Κλήση για ραντεβού" : "Call for appointment")}
                         </Link>
                         <Link
                             href={GOOGLE_MAPS_URL}
@@ -87,7 +89,7 @@ export const Hero = () => {
                             className={buttonVariants({ variant: 'outline', size: 'lg', className: 'border-brand-ivory text-brand-ivory hover:bg-brand-ivory hover:text-brand-charcoal' })}
                         >
                             <MapPin className="mr-2" size={20} />
-                            Οδηγίες
+                            {language === 'el' ? "Οδηγίες" : "Directions"}
                         </Link>
                     </motion.div>
 

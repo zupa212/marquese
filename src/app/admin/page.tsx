@@ -16,7 +16,7 @@ import {
     Pie,
     Cell
 } from 'recharts';
-import { Phone, Calendar, MapPin, TrendingUp, MousePointer2 } from 'lucide-react';
+import { Phone, Calendar, MapPin, TrendingUp, MousePointer2, Scissors } from 'lucide-react';
 
 const COLORS = ['#D4AF37', '#2E5A47', '#1C1C1C'];
 
@@ -43,6 +43,19 @@ export default function AdminDashboard() {
         name: key.toUpperCase(),
         value: stats.byCategory[key]
     }));
+
+    const serviceStats = (stats.raw as any[])
+        .filter(item => item.category === 'service')
+        .reduce((acc: any, item) => {
+            const name = item.metadata?.serviceName || item.label;
+            acc[name] = (acc[name] || 0) + 1;
+            return acc;
+        }, {});
+
+    const topServices = Object.entries(serviceStats)
+        .map(([name, count]) => ({ name, count: count as number }))
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 5);
 
     return (
         <main className="min-h-screen bg-brand-ivory pt-24 pb-12">
@@ -82,7 +95,7 @@ export default function AdminDashboard() {
                     />
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
                     {/* Daily Trend Chart */}
                     <div className="bg-white p-8 rounded-sm border border-brand-charcoal/5 shadow-sm">
                         <h3 className="text-xl font-serif font-bold mb-8 flex items-center">
@@ -111,42 +124,34 @@ export default function AdminDashboard() {
                         </div>
                     </div>
 
-                    {/* Category Distribution */}
+                    {/* Top Services */}
                     <div className="bg-white p-8 rounded-sm border border-brand-charcoal/5 shadow-sm">
-                        <h3 className="text-xl font-serif font-bold mb-8">Click Distribution</h3>
-                        <div className="h-[300px] w-full">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <PieChart>
-                                    <Pie
-                                        data={categoryData}
-                                        cx="50%"
-                                        cy="50%"
-                                        innerRadius={60}
-                                        outerRadius={80}
-                                        paddingAngle={5}
-                                        dataKey="value"
-                                    >
-                                        {categoryData.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                    <Tooltip />
-                                </PieChart>
-                            </ResponsiveContainer>
-                        </div>
-                        <div className="flex justify-center space-x-6 mt-4">
-                            {categoryData.map((entry, index) => (
-                                <div key={entry.name} className="flex items-center space-x-2">
-                                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[index % COLORS.length] }}></div>
-                                    <span className="text-xs font-bold uppercase tracking-widest">{entry.name}</span>
+                        <h3 className="text-xl font-serif font-bold mb-8 flex items-center">
+                            <Scissors className="mr-2 text-brand-gold" size={20} />
+                            Δημοφιλέστερες Υπηρεσίες
+                        </h3>
+                        <div className="space-y-6">
+                            {topServices.length > 0 ? topServices.map((svc, i) => (
+                                <div key={svc.name} className="flex items-center justify-between">
+                                    <div className="flex items-center space-x-3">
+                                        <div className="w-6 h-6 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-[10px] font-bold">
+                                            {i + 1}
+                                        </div>
+                                        <span className="text-sm font-medium text-brand-charcoal">{svc.name}</span>
+                                    </div>
+                                    <span className="text-xs font-bold text-brand-gold uppercase tracking-tighter bg-brand-gold/5 px-2 py-1 rounded">
+                                        {svc.count} Clicks
+                                    </span>
                                 </div>
-                            ))}
+                            )) : (
+                                <p className="text-brand-charcoal/40 text-sm italic py-12 text-center">Δεν υπάρχουν ακόμα δεδομένα υπηρεσιών</p>
+                            )}
                         </div>
                     </div>
                 </div>
 
                 {/* Recent Activity */}
-                <div className="mt-12 bg-white rounded-sm border border-brand-charcoal/5 overflow-hidden shadow-sm">
+                <div className="bg-white rounded-sm border border-brand-charcoal/5 overflow-hidden shadow-sm">
                     <div className="p-6 border-b border-brand-charcoal/5 flex justify-between items-center">
                         <h3 className="text-xl font-serif font-bold">Recent Activity</h3>
                         <span className="text-xs uppercase tracking-widest text-brand-charcoal/40">Last 50 clicks</span>
@@ -166,7 +171,8 @@ export default function AdminDashboard() {
                                     <tr key={item.id} className="hover:bg-brand-ivory/50 transition-colors">
                                         <td className="px-6 py-4">
                                             <span className={`px-2 py-1 rounded-full text-[10px] uppercase font-bold tracking-widest ${item.category === 'booking' ? 'bg-brand-gold/10 text-brand-gold' :
-                                                    item.category === 'call' ? 'bg-brand-green/10 text-brand-green' :
+                                                item.category === 'call' ? 'bg-brand-green/10 text-brand-green' :
+                                                    item.category === 'service' ? 'bg-brand-gold/5 text-brand-gold' :
                                                         'bg-brand-charcoal/5 text-brand-charcoal'
                                                 }`}>
                                                 {item.category}

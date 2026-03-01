@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
+import { LanguageToggle } from './LanguageToggle';
+import { useLanguage } from '@/hooks/useLanguage';
 import { buttonVariants } from './ui/Button';
 import { BUSINESS_INFO, BOOKING_URL } from '@/lib/constants';
 import { useTrackClick } from '@/hooks/useTrackClick';
@@ -14,6 +16,7 @@ export const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
     const track = useTrackClick();
+    const { t } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,11 +27,10 @@ export const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Αρχική', href: '/' },
-        { name: 'Υπηρεσίες', href: '/services' },
-        { name: 'Gallery', href: '/gallery' },
-        { name: 'Αξιολογήσεις', href: '/reviews' },
-        { name: 'Επικοινωνία', href: '/contact' },
+        { name: t.nav.services, href: '/services' },
+        { name: t.nav.gallery, href: '/gallery' },
+        { name: t.nav.reviews, href: '/reviews' },
+        { name: t.nav.contact, href: '/contact' },
     ];
 
     return (
@@ -72,8 +74,9 @@ export const Navbar = () => {
                     ))}
                 </div>
 
-                {/* Desktop CTA */}
-                <div className="hidden lg:block">
+                {/* Desktop CTA & Toggle */}
+                <div className="hidden lg:flex items-center space-x-6">
+                    <LanguageToggle />
                     <Link
                         href={BOOKING_URL || BUSINESS_INFO.phoneClick}
                         onClick={() => track('booking', 'Navbar CTA')}
@@ -83,20 +86,23 @@ export const Navbar = () => {
                             className: !(isScrolled || pathname !== '/') ? 'border-brand-ivory text-brand-ivory hover:bg-brand-ivory hover:text-brand-charcoal' : ''
                         })}
                     >
-                        Κλείστε Ραντεβού
+                        {t.nav.book}
                     </Link>
                 </div>
 
                 {/* Mobile Menu Toggle */}
-                <button
-                    className={cn(
-                        "lg:hidden p-2 transition-colors",
-                        (isScrolled || pathname !== '/') ? "text-brand-charcoal" : "text-brand-ivory"
-                    )}
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                >
-                    {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-                </button>
+                <div className="lg:hidden flex items-center space-x-4">
+                    <LanguageToggle />
+                    <button
+                        className={cn(
+                            "p-2 transition-colors",
+                            (isScrolled || pathname !== '/') ? "text-brand-charcoal" : "text-brand-ivory"
+                        )}
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu Overlay */}
@@ -125,7 +131,7 @@ export const Navbar = () => {
                     }}
                     className={buttonVariants({ variant: 'gold', size: 'lg', className: 'mt-8' })}
                 >
-                    Κλείστε Ραντεβού
+                    {t.nav.book}
                 </Link>
             </div>
         </nav>

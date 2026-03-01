@@ -5,10 +5,11 @@ const DATA_FILE = path.join(process.cwd(), 'data', 'analytics.json');
 
 export interface ClickRecord {
     id: string;
-    category: 'booking' | 'call' | 'directions';
+    category: 'booking' | 'call' | 'directions' | 'service';
     label: string;
     page: string;
     timestamp: string;
+    metadata?: Record<string, string>;
 }
 
 export const logClick = async (data: Omit<ClickRecord, 'id' | 'timestamp'>) => {

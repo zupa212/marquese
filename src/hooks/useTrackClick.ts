@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 export const useTrackClick = () => {
     const pathname = usePathname();
 
-    const track = async (category: 'booking' | 'call' | 'directions', label: string) => {
+    const track = async (category: 'booking' | 'call' | 'directions' | 'service', label: string, metadata?: Record<string, string>) => {
         try {
             await fetch('/api/track', {
                 method: 'POST',
@@ -16,6 +16,7 @@ export const useTrackClick = () => {
                     category,
                     label,
                     page: pathname,
+                    metadata,
                 }),
             });
         } catch (error) {
