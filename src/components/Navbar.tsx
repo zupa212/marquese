@@ -44,9 +44,12 @@ export const Navbar = () => {
                     : "bg-brand-charcoal/40 backdrop-blur-md border-white/5"
             )}>
                 {/* Logo */}
-                <Link href="/" className="flex flex-col group justify-center">
-                    <span className="font-serif text-xl md:text-2xl font-bold tracking-tighter text-brand-ivory transition-colors group-hover:text-brand-gold">
+                <Link href="/" className="flex flex-col group justify-center items-start lg:items-start text-left leading-none">
+                    <span className="font-serif text-2xl lg:text-3xl font-bold tracking-wider text-brand-gold transition-colors">
                         MARQUISE
+                    </span>
+                    <span className="font-sans text-[0.6rem] lg:text-[0.7rem] tracking-[0.3em] font-medium text-brand-gold/80 uppercase mt-0.5">
+                        BARBER SHOP
                     </span>
                 </Link>
 
