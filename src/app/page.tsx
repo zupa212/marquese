@@ -19,9 +19,6 @@ export default function Home() {
     <Layout>
       <Hero />
 
-      {/* 360 Virtual Tour */}
-      <VirtualTour src="/images/IMG_20260226_202229_00_041.jpg" />
-
       {/* Services Preview - Rounded Island */}
       <Section id="services" rounded>
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -51,6 +48,9 @@ export default function Home() {
 
       {/* Diagonal Parallax Divider */}
       <ParallaxDivider imageSrc="/images/parallax-barber.jpg" />
+
+      {/* 360 Virtual Tour */}
+      <VirtualTour src="/images/IMG_20260226_202229_00_041.jpg" />
 
       {/* Signature Experiences - Dark Mode Island */}
       <Section dark id="signature" rounded>

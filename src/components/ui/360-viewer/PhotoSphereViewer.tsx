@@ -55,10 +55,11 @@ export const PhotoSphereViewer = ({ src, alt = "360 Tour" }: { src: string, alt?
     }, [src, alt]);
 
     return (
-        <div className="w-full h-full relative group">
+        <div className="w-full h-full relative group min-h-[400px]">
             <div
                 ref={viewerRef}
-                className="w-full h-full"
+                style={{ width: '100%', height: '100%', minHeight: '400px' }}
+                className="w-full h-full absolute inset-0"
             />
             {/* Overlay hint that disappears on interaction */}
             <div className="absolute inset-0 pointer-events-none flex items-center justify-center bg-black/20 group-hover:bg-transparent transition-colors duration-500">
