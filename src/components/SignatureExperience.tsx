@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { BarberPole } from './BarberPole';
 import { cn } from '@/lib/utils';
 
 interface SignatureExperienceProps {
@@ -31,14 +30,6 @@ export const SignatureExperience = ({ title, description, image, reverse = false
                         className="object-cover transition-transform duration-1000 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-brand-green/20 mix-blend-multiply opacity-30"></div>
-                </div>
-
-                {/* Decorative Barber Pole */}
-                <div className={cn(
-                    "absolute -bottom-10 z-10 hidden lg:block",
-                    reverse ? "-left-10" : "-right-10"
-                )}>
-                    <BarberPole className="scale-75 shadow-[0_20px_50px_rgba(0,0,0,0.3)]" />
                 </div>
             </motion.div>
 

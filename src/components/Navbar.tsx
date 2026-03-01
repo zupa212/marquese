@@ -35,37 +35,30 @@ export const Navbar = () => {
 
     return (
         <nav
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
-                isScrolled ? "bg-brand-ivory/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent"
-            )}
+            className="fixed top-4 left-4 right-4 lg:top-6 lg:left-1/2 lg:-translate-x-1/2 lg:w-full lg:max-w-5xl z-50 transition-all duration-300"
         >
-            <div className="container mx-auto flex justify-between items-center">
+            <div className={cn(
+                "w-full rounded-full border px-6 py-3 md:py-4 transition-all duration-300 flex justify-between items-center shadow-lg",
+                isScrolled || pathname !== '/'
+                    ? "bg-brand-charcoal/80 backdrop-blur-xl border-white/10"
+                    : "bg-brand-charcoal/40 backdrop-blur-md border-white/5"
+            )}>
                 {/* Logo */}
-                <Link href="/" className="flex flex-col group">
-                    <span className={cn(
-                        "font-serif text-2xl font-bold tracking-tighter transition-colors",
-                        (isScrolled || pathname !== '/') ? "text-brand-charcoal" : "text-brand-ivory"
-                    )}>
+                <Link href="/" className="flex flex-col group justify-center">
+                    <span className="font-serif text-xl md:text-2xl font-bold tracking-tighter text-brand-ivory transition-colors group-hover:text-brand-gold">
                         MARQUISE
-                    </span>
-                    <span className={cn(
-                        "text-[10px] uppercase tracking-[0.3em] font-light -mt-1 transition-colors",
-                        (isScrolled || pathname !== '/') ? "text-brand-gold" : "text-brand-gold/80"
-                    )}>
-                        Barber Shop
                     </span>
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden lg:flex items-center space-x-10">
+                <div className="hidden lg:flex items-center space-x-8">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
                             className={cn(
-                                "text-sm uppercase tracking-widest font-medium transition-all hover:text-brand-gold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold after:transition-all hover:after:w-full",
-                                (isScrolled || pathname !== '/') ? "text-brand-charcoal" : "text-brand-ivory",
+                                "text-xs md:text-sm uppercase tracking-widest font-medium transition-all hover:text-brand-gold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[1px] after:bg-brand-gold after:transition-all hover:after:w-full",
+                                "text-brand-ivory",
                                 pathname === link.href && "text-brand-gold after:w-full"
                             )}
                         >
@@ -81,9 +74,9 @@ export const Navbar = () => {
                         href={BOOKING_URL || BUSINESS_INFO.phoneClick}
                         onClick={() => track('booking', 'Navbar CTA')}
                         className={buttonVariants({
-                            variant: (isScrolled || pathname !== '/') ? 'gold' : 'outline',
+                            variant: 'gold',
                             size: 'sm',
-                            className: !(isScrolled || pathname !== '/') ? 'border-brand-ivory text-brand-ivory hover:bg-brand-ivory hover:text-brand-charcoal' : ''
+                            className: 'rounded-full px-6 py-4 h-auto'
                         })}
                     >
                         {t.nav.book}
@@ -94,20 +87,17 @@ export const Navbar = () => {
                 <div className="lg:hidden flex items-center space-x-4">
                     <LanguageToggle />
                     <button
-                        className={cn(
-                            "p-2 transition-colors",
-                            (isScrolled || pathname !== '/') ? "text-brand-charcoal" : "text-brand-ivory"
-                        )}
+                        className="p-2 text-brand-ivory hover:text-brand-gold transition-colors"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
-                        {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>
             </div>
 
             {/* Mobile Menu Overlay */}
             <div className={cn(
-                "fixed inset-0 bg-brand-charcoal z-40 transition-transform duration-500 lg:hidden flex flex-col items-center justify-center space-y-8",
+                "fixed inset-0 bg-brand-charcoal/95 backdrop-blur-xl z-40 transition-transform duration-500 lg:hidden flex flex-col items-center justify-center space-y-8 rounded-3xl",
                 isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
             )}>
                 {navLinks.map((link) => (
@@ -116,7 +106,7 @@ export const Navbar = () => {
                         href={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
-                            "text-2xl font-serif font-bold text-brand-ivory hover:text-brand-gold transition-colors",
+                            "text-3xl font-serif font-bold text-brand-ivory hover:text-brand-gold transition-colors",
                             pathname === link.href && "text-brand-gold underline underline-offset-8 decoration-1"
                         )}
                     >
@@ -129,7 +119,7 @@ export const Navbar = () => {
                         track('booking', 'Mobile Nav CTA');
                         setIsMobileMenuOpen(false);
                     }}
-                    className={buttonVariants({ variant: 'gold', size: 'lg', className: 'mt-8' })}
+                    className={buttonVariants({ variant: 'gold', size: 'lg', className: 'mt-8 rounded-full' })}
                 >
                     {t.nav.book}
                 </Link>

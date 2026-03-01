@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Phone, MapPin, Clock, Facebook, Instagram, ExternalLink } from 'lucide-react';
 import { BUSINESS_INFO, GOOGLE_MAPS_URL } from '@/lib/constants';
-import { BarberPole } from './BarberPole';
 import { useTrackClick } from '@/hooks/useTrackClick';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translations } from '@/lib/i18n';
@@ -40,7 +39,6 @@ export const Footer = () => {
                             <Link href="#" className="text-brand-ivory opacity-40 hover:opacity-100 hover:text-brand-gold transition-all">
                                 <Facebook size={22} />
                             </Link>
-                            <BarberPole className="h-24 w-6 -ml-2" />
                         </div>
                     </div>
 

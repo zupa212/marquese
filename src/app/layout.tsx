@@ -3,6 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { BUSINESS_INFO } from "@/lib/constants";
 import { GA4Stub } from "@/components/Analytics";
+import { Providers } from "./Providers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -66,7 +67,9 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} font-sans antialiased text-brand-charcoal bg-brand-ivory`}
       >
         <GA4Stub />
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
