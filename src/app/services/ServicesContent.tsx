@@ -5,7 +5,7 @@ import { Section } from "@/components/Section";
 import { SERVICES, BOOKING_URL, BUSINESS_INFO } from "@/lib/constants";
 import { buttonVariants } from "@/components/ui/Button";
 import Link from "next/link";
-import { Scissors, Check } from "lucide-react";
+import { Scissors, Check, Clock, Euro } from "lucide-react";
 import { useTrackClick } from "@/hooks/useTrackClick";
 import { useLanguage } from "@/hooks/useLanguage";
 import { translations } from "@/lib/i18n";
@@ -40,11 +40,16 @@ export function ServicesContent() {
                                 <div className="w-12 h-12 rounded-full bg-brand-green/5 text-brand-green flex items-center justify-center">
                                     <Scissors size={24} />
                                 </div>
-                                <div className="h-px flex-grow bg-brand-gold/20 mx-4 mt-6"></div>
+                                <div className="text-right">
+                                    <span className="text-3xl font-serif font-bold text-brand-green">{service.price}€</span>
+                                </div>
                             </div>
-                            <h3 className="text-2xl font-serif font-bold mb-4">
-                                {language === 'el' ? service.name : (translations.en as any).servicesList?.[service.name] || service.name}
+                            <h3 className="text-2xl font-serif font-bold mb-2">
+                                {language === 'el' ? service.name : service.nameEn}
                             </h3>
+                            <p className="text-brand-charcoal/50 text-xs flex items-center gap-1 mb-4">
+                                <Clock size={12} /> {service.duration} {language === 'el' ? 'λεπτά' : 'min'}
+                            </p>
                             <p className="text-brand-charcoal/60 text-sm leading-relaxed mb-8">
                                 {language === 'el' ? service.description : (translations.en as any).servicesList?.[service.description] || service.description}
                             </p>
