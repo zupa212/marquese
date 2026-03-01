@@ -4,6 +4,8 @@ import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { ServiceCard } from "@/components/ServiceCard";
 import { SignatureExperience } from "@/components/SignatureExperience";
+import { TeamSection } from "@/components/TeamSection";
+import { VirtualTour } from "@/components/ui/360-viewer/VirtualTour";
 import { SERVICES, BUSINESS_INFO, BOOKING_URL, GOOGLE_MAPS_EMBED_URL, GOOGLE_MAPS_URL } from "@/lib/constants";
 import { buttonVariants } from "@/components/ui/Button";
 import Link from "next/link";
@@ -15,6 +17,9 @@ export default function Home() {
   return (
     <Layout>
       <Hero />
+
+      {/* 360 Virtual Tour */}
+      <VirtualTour src="/images/360/shop-interior.jpg" />
 
       {/* Services Preview - Rounded Island */}
       <Section id="services" rounded>
@@ -65,6 +70,9 @@ export default function Home() {
           />
         </div>
       </Section>
+
+      {/* Team Section */}
+      <TeamSection />
 
       {/* Gallery Teaser - Rounded Island */}
       <Section rounded>
@@ -190,6 +198,6 @@ export default function Home() {
           </div>
         </div>
       </Section>
-    </Layout>
+    </Layout >
   );
 }

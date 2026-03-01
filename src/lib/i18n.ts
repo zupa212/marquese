@@ -38,6 +38,22 @@ export const translations = {
             address: "Διεύθυνση",
             hours: "Ωράριο Λειτουργίας",
             closed: "Κλειστά"
+        },
+        team: {
+            title: "Η Ομάδα Μας",
+            subtitle: "Οι Master Barbers",
+            barbers: {
+                apostolis: {
+                    name: "Αποστόλης",
+                    role: "Master Barber & Founder",
+                    bio: "Με πολυετή εμπειρία στην παραδοσιακή και σύγχρονη κομμωτική τέχνη, ο Αποστόλης έχει δημιουργήσει το Marquise Barber Shop με όραμα την απόλυτη ανδρική περιποίηση. Εξειδικεύεται στα αυστηρά fades και στο κλασικό ψαλίδι."
+                },
+                aggelos: {
+                    name: "Άγγελος",
+                    role: "Senior Barber",
+                    bio: "Το πάθος του Άγγελου για την λεπτομέρεια τον ξεχωρίζει. Οι καθαρές γραμμές, η τέλεια περιποίηση γενειάδας και η αφοσίωση στην εξυπηρέτηση είναι αυτά που τον κάνουν αναντικατάστατο μέλος της ομάδας μας."
+                }
+            }
         }
     },
     en: {
@@ -110,6 +126,22 @@ export const translations = {
             address: "Address",
             hours: "Opening Hours",
             closed: "Closed"
+        },
+        team: {
+            title: "Our Team",
+            subtitle: "The Master Barbers",
+            barbers: {
+                apostolis: {
+                    name: "Apostolis",
+                    role: "Master Barber & Founder",
+                    bio: "With years of experience in traditional and modern barbering, Apostolis founded Marquise Barber Shop with a vision for ultimate men's grooming. He specializes in strict fades and classic scissor cuts."
+                },
+                aggelos: {
+                    name: "Aggelos",
+                    role: "Senior Barber",
+                    bio: "Aggelos' passion for detail sets him apart. Clean lines, perfect beard trims, and dedication to service are what make him an irreplaceable member of our team."
+                }
+            }
         }
     }
 };
