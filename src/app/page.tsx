@@ -5,6 +5,7 @@ import { Section } from "@/components/Section";
 import { ServiceCard } from "@/components/ServiceCard";
 import { SignatureExperience } from "@/components/SignatureExperience";
 import { TeamSection } from "@/components/TeamSection";
+import { ParallaxDivider } from "@/components/ParallaxDivider";
 import { VirtualTour } from "@/components/ui/360-viewer/VirtualTour";
 import { SERVICES, BUSINESS_INFO, BOOKING_URL, GOOGLE_MAPS_EMBED_URL, GOOGLE_MAPS_URL } from "@/lib/constants";
 import { buttonVariants } from "@/components/ui/Button";
@@ -47,6 +48,9 @@ export default function Home() {
           ))}
         </div>
       </Section>
+
+      {/* Diagonal Parallax Divider */}
+      <ParallaxDivider imageSrc="/images/parallax-barber.jpg" />
 
       {/* Signature Experiences - Dark Mode Island */}
       <Section dark id="signature" rounded>
