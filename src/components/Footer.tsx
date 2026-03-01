@@ -96,7 +96,7 @@ export const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-[10px] uppercase tracking-widest text-brand-ivory opacity-40">
-                    <p>© {new Date().getFullYear()} Marquise Barber Shop. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} All copyrights belong to Marquise Barber Shop.</p>
                     <p>Created by Premium Agency</p>
                 </div>
             </div>

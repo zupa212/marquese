@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 
 // Using dynamic import trick for photo-sphere-viewer since it relies heavily on window/document
 // We will load it only on the client side
+import '@photo-sphere-viewer/core/index.css';
 
 export const PhotoSphereViewer = ({ src, alt = "360 Tour" }: { src: string, alt?: string }) => {
     const viewerRef = useRef<HTMLDivElement>(null);
@@ -18,8 +19,6 @@ export const PhotoSphereViewer = ({ src, alt = "360 Tour" }: { src: string, alt?
             try {
                 // @ts-ignore
                 const { Viewer } = await import('@photo-sphere-viewer/core');
-                // @ts-ignore
-                import('@photo-sphere-viewer/core/index.css'); // Import styles dynamically 
 
                 if (isMounted && !instanceRef.current) {
                     instanceRef.current = new Viewer({
