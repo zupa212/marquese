@@ -3,7 +3,7 @@ export type Language = 'el' | 'en';
 export const translations = {
     el: {
         nav: {
-            services: "Υπηρεσίες",
+            services: "ΚΛΕΙΣΕ ΚΟΥΡΕΜΑ",
             gallery: "Γκαλερί",
             reviews: "Κριτικές",
             contact: "Επικοινωνία",
@@ -15,7 +15,7 @@ export const translations = {
             cta: "Κλείστε Ραντεβού"
         },
         servicesPage: {
-            title: "Υπηρεσίες Κουρείου & Περιποίησης",
+            title: "ΚΛΕΙΣΕ ΚΟΥΡΕΜΑ",
             description: "Στο Marquise, κάθε υπηρεσία είναι μια εμπειρία προσαρμοσμένη στις ανάγκες σας. Χρησιμοποιούμε μόνο τα καλύτερα προϊόντα για το τέλειο αποτέλεσμα στην Κηφισιά.",
             ready: "Έτοιμοι για την ανανέωσή σας;",
             cta: "Κλείστε Ραντεβού Online",
@@ -33,10 +33,10 @@ export const translations = {
             ctaPhone: "Κλήση για ραντεβού"
         },
         homepage: {
-            servicesLabel: "Premium Υπηρεσίες",
-            servicesTitle: "Ζήστε το Καλύτερο",
+            servicesLabel: "ΚΛΕΙΣΕ ΚΟΥΡΕΜΑ",
+            servicesTitle: "ΚΛΕΙΣΕ ΚΟΥΡΕΜΑ",
             servicesDesc: "Εξειδικευμένες υπηρεσίες περιποίησης προσαρμοσμένες στις δικές σας ανάγκες. Από το κλασικό κούρεμα μέχρι την πλήρη θεραπεία τριχωτού.",
-            servicesCta: "Πλήρης Κατάλογος",
+            servicesCta: "ΚΛΕΙΣΕ ΚΟΥΡΕΜΑ",
             signatureLabel: "Η Τέχνη του Barbering",
             signatureTitle: "Marquise Signature",
             signatureShaveTitle: "Παραδοσιακό Ξύρισμα",
@@ -85,7 +85,7 @@ export const translations = {
     },
     en: {
         nav: {
-            services: "Services",
+            services: "BOOK HAIRCUT",
             gallery: "Gallery",
             reviews: "Reviews",
             contact: "Contact",
@@ -148,8 +148,8 @@ export const translations = {
             "Κυριακή": "Sunday"
         },
         homepage: {
-            servicesLabel: "Premium Services",
-            servicesTitle: "Experience the Best",
+            servicesLabel: "BOOK HAIRCUT",
+            servicesTitle: "BOOK HAIRCUT",
             servicesDesc: "Specialized grooming services tailored to your needs. From classic cuts to full scalp treatments.",
             servicesCta: "Full Catalog",
             signatureLabel: "The Art of Barbering",

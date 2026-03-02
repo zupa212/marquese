@@ -1,5 +1,7 @@
-import { HomeContent } from "./HomeContent";
+import { UnderConstruction } from "@/components/UnderConstruction";
+// import { HomeContent } from "./HomeContent";
 
 export default function Home() {
-  return <HomeContent />;
+  // return <HomeContent />;
+  return <UnderConstruction />;
 }
