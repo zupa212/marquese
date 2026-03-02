@@ -6,7 +6,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Blog — Συμβουλές Ανδρικής Περιποίησης Κηφισιά",
-    description: "Άρθρα, συμβουλές και οδηγοί για ανδρικά κουρέματα, beard care, και παιδικά κουρέματα από το Marquise Barber Shop Κηφισιά.",
+    description: "Άρθρα, συμβουλές και οδηγοί για ανδρικά κουρέματα, beard care, fade και παιδικά κουρέματα από το Marquise Barber Shop Κηφισιά.",
     openGraph: {
         title: "Blog | Marquise Barber Shop",
         description: "Οδηγοί και συμβουλές ανδρικής περιποίησης από τους experts του Marquise.",
@@ -18,6 +18,27 @@ export const metadata: Metadata = {
 };
 
 const BLOG_POSTS = [
+    {
+        slug: "kalyitero-barber-shop-kifisia",
+        title: "Καλύτερο Barber Shop στην Κηφισιά",
+        excerpt: "Γιατί το Marquise ξεχωρίζει στα Βόρεια Προάστια — 5.056+ κριτικές 5 αστέρια, 16 εξειδικευμένες υπηρεσίες, premium χώρος.",
+        date: "2026-03-02",
+        readTime: "4 λεπτά",
+    },
+    {
+        slug: "mid-taper-fade",
+        title: "Mid Taper Fade — Τι Είναι & Γιατί Είναι Trend",
+        excerpt: "Ο πλήρης οδηγός για κάθε τύπο fade: low, mid, high, skin. Μάθετε ποιο ταιριάζει στο δικό σας στυλ.",
+        date: "2026-03-02",
+        readTime: "5 λεπτά",
+    },
+    {
+        slug: "paradosiako-xyrisma",
+        title: "Παραδοσιακό Ξύρισμα με Φάκα — Η Εμπειρία",
+        excerpt: "Ζεστές πετσέτες, αφρός με πινέλο, straight razor — βήμα βήμα η τελετουργία του αυθεντικού ξυρίσματος.",
+        date: "2026-03-02",
+        readTime: "4 λεπτά",
+    },
     {
         slug: "paidiko-kourema-kifisia",
         title: "Παιδικό Κούρεμα Κηφισιά & Βόρεια Προάστια",
