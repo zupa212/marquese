@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 const BLOG_POSTS = [
     {
         slug: "kalyitero-barber-shop-kifisia",
-        title: "Καλύτερο Barber Shop στην Κηφισιά",
-        excerpt: "Γιατί το Marquise ξεχωρίζει στα Βόρεια Προάστια — 5.056+ κριτικές 5 αστέρια, 16 εξειδικευμένες υπηρεσίες, premium χώρος.",
+        title: "Κουρείο Κηφισιά — Marquise Barber Shop",
+        excerpt: "Κουρείο στην Κηφισιά με 5.056+ κριτικές 5 αστέρια. Ανδρικά κουρέματα, fade, παραδοσιακό ξύρισμα, beard grooming, premium χώρος.",
         date: "2026-03-02",
         readTime: "4 λεπτά",
     },

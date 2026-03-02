@@ -7,17 +7,17 @@ import { buttonVariants } from "@/components/ui/Button";
 import { MapPin, Calendar, Phone, Star, ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Καλύτερο Barber Shop στην Κηφισιά — Marquise Barber Shop",
-    description: "Ψάχνετε το καλύτερο κουρείο στην Κηφισιά; Το Marquise Barber Shop προσφέρει premium ανδρικά κουρέματα, fade, παραδοσιακό ξύρισμα και beard grooming. 5.056+ κριτικές 5 αστέρια.",
-    keywords: ["καλύτερο κουρείο Κηφισιά", "barber shop Κηφισιά", "κουρείο Κηφισιά", "best barber Kifisia", "ανδρικό κούρεμα Κηφισιά", "μπαρμπέρικο βόρεια προάστια"],
+    title: "Κουρείο Κηφισιά — Marquise Barber Shop | Premium Ανδρικό Μπαρμπέρικο",
+    description: "Κουρείο στην Κηφισιά με 5.056+ κριτικές 5 αστέρια. Ανδρικά κουρέματα, fade, παραδοσιακό ξύρισμα, beard grooming, detox τριχωτού, παιδικά κουρέματα. Κλείστε ραντεβού online στο Marquise Barber Shop.",
+    keywords: ["κουρείο Κηφισιά", "barber shop Κηφισιά", "μπαρμπέρικο Κηφισιά", "ανδρικό κούρεμα Κηφισιά", "κούρεμα Κηφισιά", "barbershop Kifisia", "barber Kifisia Athens", "κουρείο βόρεια προάστια", "μπαρμπέρικο βόρεια προάστια", "fade κούρεμα Κηφισιά", "taper fade Κηφισιά", "παραδοσιακό ξύρισμα Κηφισιά", "beard grooming Κηφισιά", "ξύρισμα με φάκα Κηφισιά", "ανδρική περιποίηση Κηφισιά", "κουρείο Μαρούσι", "barber shop Χαλάνδρι", "κουρείο Νέα Ερυθραία", "premium κουρείο Αθήνα", "ραντεβού κουρείο online", "eBarber Marquise", "Marquise Barber Shop"],
     openGraph: {
-        title: "Καλύτερο Barber Shop Κηφισιά | Marquise",
-        description: "Premium ανδρικά κουρέματα με 5.056+ κριτικές 5 αστέρια. Κλείστε ραντεβού online.",
+        title: "Κουρείο Κηφισιά | Marquise Barber Shop",
+        description: "Premium ανδρικά κουρέματα, fade, beard grooming στην Κηφισιά. 5.056+ κριτικές 5 αστέρια.",
         url: "https://www.marquisebarbershop.gr/blog/kalyitero-barber-shop-kifisia",
     },
     twitter: {
-        title: "Καλύτερο Barber Shop Κηφισιά | Marquise",
-        description: "Premium ανδρικά κουρέματα με 5.056+ κριτικές 5 αστέρια.",
+        title: "Κουρείο Κηφισιά | Marquise Barber Shop",
+        description: "Premium ανδρικά κουρέματα, fade, beard grooming στην Κηφισιά. 5.056+ κριτικές 5 αστέρια.",
     },
     alternates: {
         canonical: "https://www.marquisebarbershop.gr/blog/kalyitero-barber-shop-kifisia",
@@ -54,10 +54,10 @@ export default function KalyteroBarberPage() {
                         <ChevronRight size={12} />
                         <Link href="/blog" className="hover:underline">Blog</Link>
                         <ChevronRight size={12} />
-                        <span className="text-brand-ivory/60">Καλύτερο Barber Shop</span>
+                        <span className="text-brand-ivory/60">Κουρείο Κηφισιά</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 italic leading-tight">
-                        Καλύτερο Barber Shop<br className="hidden md:block" /> στην Κηφισιά
+                        Κουρείο Κηφισιά<br className="hidden md:block" /> Marquise Barber Shop
                     </h1>
                     <p className="max-w-2xl text-brand-ivory/80 text-lg font-light leading-relaxed">
                         Αν ψάχνετε ένα premium <strong className="text-brand-gold">ανδρικό κουρείο</strong> στην Κηφισιά με εξαιρετικές κριτικές,
