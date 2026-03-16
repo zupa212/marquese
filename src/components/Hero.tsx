@@ -24,16 +24,29 @@ export const Hero = () => {
 
     return (
         <section ref={containerRef} className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden">
-            {/* Parallax Background Image */}
+            {/* Parallax Background Video */}
             <motion.div style={{ y }} className="absolute inset-0 z-0">
-                <Image
-                    src="/images/hero.png"
-                    alt={language === 'el' ? "Premium Ανδρικό Κουρείο Marquise Barber Shop στην Κηφισιά - Πρόσοψη Καταστήματος" : "Premium Marquise Barber Shop in Kifisia - Storefront"}
-                    fill
-                    priority
-                    className="object-cover object-center scale-110"
-                />
-                <div className="absolute inset-0 hero-overlay z-10"></div>
+                <div className="absolute inset-0 z-0">
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        poster="/images/hero.png"
+                        className="w-full h-full object-cover scale-110"
+                    >
+                        <source src="/videos/hero-barber.mp4" type="video/mp4" />
+                        {/* Fallback Image */}
+                        <Image
+                            src="/images/hero.png"
+                            alt={language === 'el' ? "Premium Ανδρικό Κουρείο Marquise Barber Shop στην Κηφισιά" : "Premium Marquise Barber Shop in Kifisia"}
+                            fill
+                            priority
+                            className="object-cover object-center scale-110"
+                        />
+                    </video>
+                </div>
+                <div className="absolute inset-0 hero-overlay z-10 bg-brand-charcoal/60"></div>
             </motion.div>
 
             <div className="container mx-auto px-6 relative z-20 pt-20">
