@@ -1,7 +1,7 @@
-// import { HomeContent } from "./HomeContent";
-import { UnderConstruction } from "@/components/UnderConstruction";
+import { HomeContent } from "./HomeContent";
+// import { UnderConstruction } from "@/components/UnderConstruction";
 
 export default function Home() {
-  // return <HomeContent />;
-  return <UnderConstruction />;
+  return <HomeContent />;
+  // return <UnderConstruction />;
 }
