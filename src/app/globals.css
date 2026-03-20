@@ -7,6 +7,8 @@
   --color-brand-gold: #D4AF37;
   --color-brand-ivory: #FDFCF0;
   --color-brand-charcoal: #1C1C1C;
+  --color-brand-pastel-green: #e1ede6; /* Light, soft pastel green */
+  --color-brand-pastel-green-dark: #cbdcd1;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui;
   --font-serif: var(--font-playfair), ui-serif, Georgia;

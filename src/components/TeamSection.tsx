@@ -11,12 +11,12 @@ export const TeamSection = () => {
         {
             id: "apostolis",
             ...t.team.barbers.apostolis,
-            image: "/images/barbers/apostolis.jpg", // Needs placeholder
+            image: "/images/barbers/apostolis.jpg",
         },
         {
             id: "aggelos",
             ...t.team.barbers.aggelos,
-            image: "/images/barbers/aggelos.jpg", // Needs placeholder
+            image: "/images/barbers/aggelos.jpg",
         }
     ];
 
@@ -44,10 +44,7 @@ export const TeamSection = () => {
                                 src={barber.image}
                                 alt={barber.name}
                                 fill
-                                className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-0 group-hover:opacity-100" // We hide it until user uploads real images to avoid broken link icons, revealing true color on hover
-                                onError={(e) => {
-                                    e.currentTarget.style.display = 'none'; // Hide broken image wrapper respectfully
-                                }}
+                                className="object-cover group-hover:scale-105 transition-all duration-700" 
                             />
                             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
 

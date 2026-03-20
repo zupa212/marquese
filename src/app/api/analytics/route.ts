@@ -7,13 +7,13 @@ export async function GET() {
 
         // Aggregations
         const totalClicks = data.length;
-        const byCategory = data.reduce((acc: any, record) => {
+        const byCategory = data.reduce((acc: Record<string, number>, record) => {
             acc[record.category] = (acc[record.category] || 0) + 1;
             return acc;
         }, {});
 
         // Daily breakdown (last 30 days)
-        const byDate = data.reduce((acc: any, record) => {
+        const byDate = data.reduce((acc: Record<string, number>, record) => {
             const date = record.timestamp.split('T')[0];
             acc[date] = (acc[date] || 0) + 1;
             return acc;

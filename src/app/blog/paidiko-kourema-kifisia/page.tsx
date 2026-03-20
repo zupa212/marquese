@@ -64,6 +64,9 @@ export default function PaidikoKouremaPage() {
     return (
         <Layout>
             {/* FAQ Schema for LLM SEO */}
+            {/*- [ ] Server Migration & Network Access
+    - [/] Restart server on port 3000
+    - [ ] Verify local network availability*/}
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -96,7 +99,7 @@ export default function PaidikoKouremaPage() {
                     <h2 className="text-3xl font-serif font-bold text-brand-charcoal mb-6">Γιατί να επιλέξετε το Marquise για παιδικό κούρεμα;</h2>
 
                     <p className="text-brand-charcoal/70 leading-relaxed mb-8">
-                        Το παιδικό κούρεμα δεν είναι απλά μια "μικρή" εκδοχή ενός ανδρικού κουρέματος. Χρειάζεται ιδιαίτερη προσέγγιση, υπομονή και — πάνω απ' όλα — ένας barber που ξέρει πώς να κάνει το παιδί σας να αισθάνεται άνετα.
+                        Το παιδικό κούρεμα δεν είναι απλά μια &quot;μικρή&quot; εκδοχή ενός ανδρικού κουρέματος. Χρειάζεται ιδιαίτερη προσέγγιση, υπομονή και — πάνω απ&apos; όλα — ένας barber που ξέρει πώς να κάνει το παιδί σας να αισθάνεται άνετα.
                     </p>
 
                     <p className="text-brand-charcoal/70 leading-relaxed mb-8">

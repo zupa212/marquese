@@ -1,7 +1,7 @@
 import { Layout } from "@/components/Layout";
 import Image from "next/image";
 import { Section } from "@/components/Section";
-import { ExternalLink, Instagram, ThumbsUp } from "lucide-react";
+import { Instagram, ThumbsUp } from "lucide-react";
 import { buttonVariants } from "@/components/ui/Button";
 import Link from "next/link";
 import { Metadata } from "next";

@@ -3,7 +3,7 @@ import { Layout } from "@/components/Layout";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/Button";
 import { Home, Scissors, Phone, AlertCircle } from "lucide-react";
-import { BOOKING_URL, BUSINESS_INFO } from "@/lib/constants";
+import { BOOKING_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
     title: "404 - Η σελίδα δεν βρέθηκε | Marquise Barber Shop",

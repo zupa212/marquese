@@ -1,7 +1,6 @@
 "use client";
 
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion } from 'framer-motion';
 
 export const LanguageToggle = () => {
     const { language, setLanguage } = useLanguage();

@@ -1,4 +1,5 @@
 export type Language = 'el' | 'en';
+export type TranslationSchema = typeof translations.el;
 
 export const translations = {
     el: {

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState, useMemo } from 'react';
-import { Section } from '@/components/Section';
 import {
     BarChart,
     Bar,
@@ -10,8 +9,6 @@ import {
     CartesianGrid,
     Tooltip,
     ResponsiveContainer,
-    LineChart,
-    Line,
     PieChart,
     Pie,
     Cell,
@@ -19,10 +16,9 @@ import {
     Area,
     Legend
 } from 'recharts';
-import { Phone, Calendar, MapPin, TrendingUp, MousePointer2, Scissors, Lock, Eye, EyeOff, LogOut, BarChart3, Activity, Users, ArrowUpRight, ArrowDownRight, Clock } from 'lucide-react';
+import { Phone, Calendar, MapPin, TrendingUp, MousePointer2, Scissors, Lock, Eye, EyeOff, LogOut, BarChart3, Activity, ArrowUpRight, Clock } from 'lucide-react';
 
 const ADMIN_PASSWORD = 'marquoise@';
-const COLORS = ['#D4AF37', '#2E5A47', '#1C1C1C', '#8B6914', '#4A8B6A'];
 const CATEGORY_COLORS: Record<string, string> = {
     booking: '#D4AF37',
     call: '#2E5A47',
@@ -35,6 +31,26 @@ const CATEGORY_LABELS: Record<string, string> = {
     directions: 'Οδηγίες',
     service: 'Υπηρεσίες',
 };
+
+interface AnalyticsRecord {
+    id: string;
+    category: 'booking' | 'call' | 'directions' | 'service';
+    label: string;
+    timestamp: string;
+    metadata?: {
+        serviceName?: string;
+        [key: string]: unknown;
+    };
+    page?: string;
+}
+
+interface AnalyticsStats {
+    totalClicks: number;
+    byCategory: Record<string, number>;
+    dailyStats: Array<{ date: string; count: number }>;
+    raw: AnalyticsRecord[];
+    error?: string;
+}
 
 // ─── Login Gate ───────────────────────────────────────────
 function LoginGate({ onAuth }: { onAuth: () => void }) {
@@ -114,17 +130,15 @@ function LoginGate({ onAuth }: { onAuth: () => void }) {
 
 // ─── Main Dashboard ──────────────────────────────────────
 export default function AdminDashboard() {
-    const [authed, setAuthed] = useState(false);
-    const [stats, setStats] = useState<any>(null);
+    const [authed, setAuthed] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return sessionStorage.getItem('admin_auth') === 'true';
+        }
+        return false;
+    });
+    const [stats, setStats] = useState<AnalyticsStats | null>(null);
     const [loading, setLoading] = useState(true);
     const [period, setPeriod] = useState<'7d' | '30d' | 'all'>('30d');
-
-    // Check session on mount
-    useEffect(() => {
-        if (sessionStorage.getItem('admin_auth') === 'true') {
-            setAuthed(true);
-        }
-    }, []);
 
     // Fetch data once authed
     useEffect(() => {
@@ -166,7 +180,7 @@ export default function AdminDashboard() {
 
 // ─── Dashboard Content ───────────────────────────────────
 function DashboardContent({ stats, period, setPeriod, onLogout }: {
-    stats: any;
+    stats: AnalyticsStats;
     period: '7d' | '30d' | 'all';
     setPeriod: (p: '7d' | '30d' | 'all') => void;
     onLogout: () => void;
@@ -177,7 +191,7 @@ function DashboardContent({ stats, period, setPeriod, onLogout }: {
         const now = new Date();
         const days = period === '7d' ? 7 : period === '30d' ? 30 : 9999;
         const cutoff = new Date(now.getTime() - days * 86400000).toISOString().split('T')[0];
-        return stats.dailyStats.filter((d: any) => d.date >= cutoff);
+        return stats.dailyStats.filter(d => d.date >= cutoff);
     }, [stats.dailyStats, period]);
 
     const filteredRaw = useMemo(() => {
@@ -185,13 +199,13 @@ function DashboardContent({ stats, period, setPeriod, onLogout }: {
         const now = new Date();
         const days = period === '7d' ? 7 : period === '30d' ? 30 : 9999;
         const cutoff = new Date(now.getTime() - days * 86400000).toISOString();
-        return stats.raw.filter((d: any) => d.timestamp >= cutoff);
+        return stats.raw.filter(d => d.timestamp >= cutoff);
     }, [stats.raw, period]);
 
     // Category breakdown from filtered raw data
     const categoryData = useMemo(() => {
         const counts: Record<string, number> = {};
-        filteredRaw.forEach((item: any) => {
+        filteredRaw.forEach(item => {
             counts[item.category] = (counts[item.category] || 0) + 1;
         });
         return Object.entries(counts).map(([name, value]) => ({
@@ -205,8 +219,8 @@ function DashboardContent({ stats, period, setPeriod, onLogout }: {
     const topServices = useMemo(() => {
         const serviceStats: Record<string, number> = {};
         filteredRaw
-            .filter((item: any) => item.category === 'service')
-            .forEach((item: any) => {
+            .filter(item => item.category === 'service')
+            .forEach(item => {
                 const name = item.metadata?.serviceName || item.label;
                 serviceStats[name] = (serviceStats[name] || 0) + 1;
             });
@@ -219,7 +233,7 @@ function DashboardContent({ stats, period, setPeriod, onLogout }: {
     // Hourly heatmap data
     const hourlyData = useMemo(() => {
         const hours = Array(24).fill(0);
-        filteredRaw.forEach((item: any) => {
+        filteredRaw.forEach(item => {
             const hour = new Date(item.timestamp).getHours();
             hours[hour]++;
         });
@@ -232,7 +246,7 @@ function DashboardContent({ stats, period, setPeriod, onLogout }: {
     // Weekly data for area chart
     const weeklyData = useMemo(() => {
         const weeks: Record<string, Record<string, number>> = {};
-        filteredRaw.forEach((item: any) => {
+        filteredRaw.forEach((item: AnalyticsRecord) => {
             const d = new Date(item.timestamp);
             const weekStart = new Date(d);
             weekStart.setDate(d.getDate() - d.getDay());
@@ -249,16 +263,15 @@ function DashboardContent({ stats, period, setPeriod, onLogout }: {
 
     // Compute stats
     const totalFiltered = filteredRaw.length;
-    const bookings = filteredRaw.filter((i: any) => i.category === 'booking').length;
-    const calls = filteredRaw.filter((i: any) => i.category === 'call').length;
-    const directions = filteredRaw.filter((i: any) => i.category === 'directions').length;
-    const services = filteredRaw.filter((i: any) => i.category === 'service').length;
+    const bookings = filteredRaw.filter((i: AnalyticsRecord) => i.category === 'booking').length;
+    const calls = filteredRaw.filter((i: AnalyticsRecord) => i.category === 'call').length;
+    const directions = filteredRaw.filter((i: AnalyticsRecord) => i.category === 'directions').length;
 
     // Conversion rate (bookings / total * 100)
     const conversionRate = totalFiltered > 0 ? ((bookings / totalFiltered) * 100).toFixed(1) : '0';
 
     // Avg daily clicks
-    const uniqueDays = new Set(filteredRaw.map((i: any) => i.timestamp?.split('T')[0])).size;
+    const uniqueDays = new Set(filteredRaw.map((i: AnalyticsRecord) => i.timestamp?.split('T')[0])).size;
     const avgDaily = uniqueDays > 0 ? (totalFiltered / uniqueDays).toFixed(1) : '0';
 
     return (
@@ -514,7 +527,7 @@ function DashboardContent({ stats, period, setPeriod, onLogout }: {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-black/5">
-                                {(stats.raw || []).slice().reverse().map((item: any) => (
+                                {(stats.raw || []).slice().reverse().map((item: AnalyticsRecord) => (
                                     <tr key={item.id} className="hover:bg-brand-ivory/30 transition-colors">
                                         <td className="px-6 py-4">
                                             <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10px] uppercase font-bold tracking-widest ${item.category === 'booking'
@@ -560,7 +573,7 @@ function DashboardContent({ stats, period, setPeriod, onLogout }: {
 // ─── KPI Card Component ──────────────────────────────────
 function KPICard({ title, value, icon, color, highlight }: {
     title: string;
-    value: any;
+    value: string | number;
     icon: React.ReactNode;
     color: 'gold' | 'green' | 'charcoal';
     highlight?: boolean;

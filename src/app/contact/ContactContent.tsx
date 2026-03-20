@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { useTrackClick } from "@/hooks/useTrackClick";
 import { Section } from "@/components/Section";
 import { useLanguage } from "@/hooks/useLanguage";
-import { translations } from "@/lib/i18n";
+import { translations, TranslationSchema } from "@/lib/i18n";
 
 export const ContactContent = () => {
     const track = useTrackClick();
@@ -91,7 +91,7 @@ export const ContactContent = () => {
                                     {BUSINESS_INFO.hours.map((item) => (
                                         <li key={item.day} className="flex justify-between items-center border-b border-brand-charcoal/5 pb-2">
                                             <span className="font-bold text-sm uppercase tracking-widest text-brand-charcoal/60">
-                                                {language === 'el' ? item.day : (translations.en as any).days?.[item.day] || item.day}
+                                                {language === 'el' ? item.day : (translations.en as TranslationSchema & { days: Record<string, string> }).days?.[item.day] || item.day}
                                             </span>
                                             <span className={cn(
                                                 "font-serif font-bold text-lg",

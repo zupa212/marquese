@@ -35,7 +35,7 @@ export const Hero = () => {
                         poster="/images/hero.png"
                         className="w-full h-full object-cover scale-110"
                     >
-                        <source src="/videos/hero-barber.mp4" type="video/mp4" />
+                        <source src="/videos/barber-edit-final.mp4" type="video/mp4" />
                         {/* Fallback Image */}
                         <Image
                             src="/images/hero.png"
@@ -69,7 +69,7 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-brand-ivory leading-[1.1] mb-6"
                     >
-                        {t.hero.title} — <span className="text-brand-gold">{language === 'el' ? 'Premium κουρέματα' : 'Premium cuts'}</span> {language === 'el' ? 'στην Κηφισιά' : 'in Kifisia'}
+                        {t.hero?.title} — <span className="text-brand-gold">{language === 'el' ? 'Premium κουρέματα' : 'Premium cuts'}</span> {language === 'el' ? 'στην Κηφισιά' : 'in Kifisia'}
                     </motion.h1>
 
                     <motion.p
@@ -78,7 +78,7 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-lg md:text-xl text-brand-ivory/80 mb-10 max-w-2xl font-light leading-relaxed"
                     >
-                        {t.hero.subtitle}
+                        {t.hero?.subtitle}
                     </motion.p>
 
                     <motion.div

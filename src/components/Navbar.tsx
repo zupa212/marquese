@@ -28,7 +28,6 @@ export const Navbar = () => {
 
     const navLinks = [
         { name: t.nav.services, href: '/services' },
-        { name: t.nav.gallery, href: '/gallery' },
         { name: t.nav.reviews, href: '/reviews' },
         { name: t.nav.contact, href: '/contact' },
     ];

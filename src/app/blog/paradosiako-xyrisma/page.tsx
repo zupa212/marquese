@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { BOOKING_URL, BUSINESS_INFO } from "@/lib/constants";
 import { buttonVariants } from "@/components/ui/Button";
-import { Calendar, Phone, ChevronRight, Star } from "lucide-react";
+import { Calendar, Phone, ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Παραδοσιακό Ξύρισμα με Φάκα — Η Εμπειρία στο Marquise Κηφισιά",

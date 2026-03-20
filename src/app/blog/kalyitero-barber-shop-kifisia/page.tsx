@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { BOOKING_URL, BUSINESS_INFO } from "@/lib/constants";
 import { buttonVariants } from "@/components/ui/Button";
-import { MapPin, Calendar, Phone, Star, ChevronRight } from "lucide-react";
+import { Calendar, Phone, Star, ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Κουρείο Κηφισιά — Marquise Barber Shop | Premium Ανδρικό Μπαρμπέρικο",

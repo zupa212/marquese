@@ -12,8 +12,10 @@ import { VirtualTour } from "@/components/ui/360-viewer/VirtualTour";
 import { SERVICES, BUSINESS_INFO, BOOKING_URL, GOOGLE_MAPS_EMBED_URL, GOOGLE_MAPS_URL } from "@/lib/constants";
 import { buttonVariants } from "@/components/ui/Button";
 import Link from "next/link";
-import { Quote, Phone, MapPin, Calendar, ExternalLink, Star } from "lucide-react";
+import { Quote, Phone, MapPin, ExternalLink, Star } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { HorizontalGallery } from "@/components/HorizontalGallery";
+
 
 export function HomeContent() {
     const { t, language } = useLanguage();
@@ -82,39 +84,17 @@ export function HomeContent() {
             {/* Team Section */}
             <TeamSection />
 
-            {/* Gallery Teaser - Rounded Island */}
-            <Section rounded>
-                <div className="text-center mb-16">
+
+            {/* Gallery Section - Horizontal Smooth Scroll */}
+            <div className="bg-brand-charcoal overflow-visible">
+                <div className="text-center pt-24 pb-16 px-6">
                     <span className="text-brand-gold font-serif text-lg italic tracking-widest uppercase">{t.homepage.galleryLabel}</span>
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-charcoal mt-2 mb-4">{t.homepage.galleryTitle}</h2>
-                    <p className="text-brand-charcoal/60">{t.homepage.galleryDesc}</p>
+                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-brand-ivory mt-2 mb-4 italic">{t.homepage.galleryTitle}</h2>
+                    <p className="text-brand-ivory/60">{t.homepage.galleryDesc}</p>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                    {[1, 2, 3, 4].map((i) => (
-                        <div key={i} className="aspect-square relative overflow-hidden group rounded-[2rem] shadow-lg">
-                            <Image
-                                src={`https://images.unsplash.com/photo-1599351431247-f132f017154c?q=80&w=687&auto=format&fit=crop&sig=${i}`}
-                                alt={language === 'el'
-                                    ? `Premium υπηρεσίες ανδρικής περιποίησης και κουρέματος στο Marquise Barber Shop Κηφισιά - Στιγμιότυπο ${i}`
-                                    : `Premium men's grooming and haircuts at Marquise Barber Shop Kifisia - Snapshot ${i}`}
-                                fill
-                                sizes="(max-width: 768px) 50vw, 25vw"
-                                className="object-cover group-hover:scale-110 transition-transform duration-1000"
-                            />
-                            <div className="absolute inset-0 bg-brand-green/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                <Link href="/gallery" className="text-white bg-brand-charcoal/80 p-3 rounded-full scale-0 group-hover:scale-100 transition-transform duration-500">
-                                    <ExternalLink size={20} />
-                                </Link>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div className="text-center">
-                    <Link href="/gallery" className={buttonVariants({ variant: 'outline', size: 'lg' })}>
-                        {t.homepage.galleryCta}
-                    </Link>
-                </div>
-            </Section>
+                
+                <HorizontalGallery />
+            </div>
 
             {/* Reviews Teaser */}
             <Section id="reviews" dark rounded className="mb-20">

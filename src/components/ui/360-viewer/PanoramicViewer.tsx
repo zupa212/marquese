@@ -10,9 +10,17 @@ interface PanoramicViewerProps {
     alt?: string;
 }
 
+interface PannellumViewer {
+    destroy: () => void;
+    on: (event: string, handler: () => void) => void;
+    startOrientation: () => void;
+    stopOrientation: () => void;
+    toggleFullscreen: () => void;
+}
+
 export const PanoramicViewer = ({ src, mobileSrc, alt = "360 Tour" }: PanoramicViewerProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const viewerRef = useRef<any>(null);
+    const viewerRef = useRef<PannellumViewer | null>(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [audioEnabled, setAudioEnabled] = useState(false);
     const [isGyroEnabled, setIsGyroEnabled] = useState(false);
@@ -28,9 +36,10 @@ export const PanoramicViewer = ({ src, mobileSrc, alt = "360 Tour" }: PanoramicV
     };
 
     const initViewer = () => {
-        if (typeof window === 'undefined' || !(window as any).pannellum || !containerRef.current) return;
+        const pannellum = (window as unknown as { pannellum: { viewer: (el: HTMLElement, config: unknown) => PannellumViewer } }).pannellum;
+        if (typeof window === 'undefined' || !pannellum || !containerRef.current) return;
 
-        viewerRef.current = (window as any).pannellum.viewer(containerRef.current, {
+        viewerRef.current = pannellum.viewer(containerRef.current, {
             type: 'equirectangular',
             panorama: getOptimalTexture(),
             autoLoad: true,
@@ -46,8 +55,8 @@ export const PanoramicViewer = ({ src, mobileSrc, alt = "360 Tour" }: PanoramicV
         });
 
         // Event listeners for audio
-        viewerRef.current.on('mousedown', playInteractionSound);
-        viewerRef.current.on('touchstart', playInteractionSound);
+        viewerRef.current?.on('mousedown', playInteractionSound);
+        viewerRef.current?.on('touchstart', playInteractionSound);
 
         setIsLoaded(true);
     };
@@ -82,9 +91,13 @@ export const PanoramicViewer = ({ src, mobileSrc, alt = "360 Tour" }: PanoramicV
     const toggleGyro = async () => {
         if (!isGyroEnabled) {
             // Request Device Orientation Permission for iOS 13+
-            if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
+            const DeviceOrientation = DeviceOrientationEvent as unknown as {
+                requestPermission?: () => Promise<'granted' | 'denied'>;
+            };
+
+            if (typeof DeviceOrientation.requestPermission === 'function') {
                 try {
-                    const permissionState = await (DeviceOrientationEvent as any).requestPermission();
+                    const permissionState = await DeviceOrientation.requestPermission();
                     if (permissionState === 'granted') {
                         viewerRef.current?.startOrientation();
                         setIsGyroEnabled(true);
