@@ -74,7 +74,7 @@ export const translations = {
                 apostolis: {
                     name: "Αποστόλης",
                     role: "Master Barber & Founder",
-                    bio: "Με πολυετή εμπειρία στην παραδοσιακή και σύγχρονη κομμωτική τέχνη, ο Αποστόλης έχει δημιουργήσει το Marquise Barber Shop με όραμα την απόλυτη ανδρική περιποίηση. Εξειδικεύεται στα αυστηρά fades και στο κλασικό ψαλίδι."
+                    bio: ""
                 },
                 aggelos: {
                     name: "Άγγελος",
@@ -189,12 +189,12 @@ export const translations = {
                 apostolis: {
                     name: "Apostolis",
                     role: "Master Barber & Founder",
-                    bio: "With years of experience in traditional and modern barbering, Apostolis founded Marquise Barber Shop with a vision for ultimate men's grooming. He specializes in strict fades and classic scissor cuts."
+                    bio: ""
                 },
                 aggelos: {
                     name: "Aggelos",
                     role: "Senior Barber",
-                    bio: "Aggelos' passion for detail sets him apart. Clean lines, perfect beard trims, and dedication to service are what make him an irreplaceable member of our team."
+                    bio: ""
                 }
             }
         }
