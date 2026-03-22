@@ -19,7 +19,7 @@ export const Hero = () => {
         offset: ["start start", "end start"]
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "80%"]);
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
     return (
@@ -33,7 +33,7 @@ export const Hero = () => {
                         muted
                         playsInline
                         poster="/images/IMG_20260226_202229_00_041.jpg"
-                        className="w-full h-full object-cover scale-125"
+                        className="w-full h-full object-cover scale-150"
                     >
                         <source src="/videos/barber-edit-final.mp4" type="video/mp4" />
                         {/* Fallback Image */}
@@ -42,7 +42,7 @@ export const Hero = () => {
                             alt={language === 'el' ? "Premium Ανδρικό Κουρείο Marquise Barber Shop στην Κηφισιά" : "Premium Marquise Barber Shop in Kifisia"}
                             fill
                             priority
-                            className="object-cover object-center scale-125"
+                            className="object-cover object-center scale-150"
                         />
                     </video>
                 </div>
@@ -90,7 +90,7 @@ export const Hero = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 1.2 }}
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -400]) }}
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -600]) }}
                         className="mt-16 inline-block w-full sm:w-auto"
                     >
                         <a 

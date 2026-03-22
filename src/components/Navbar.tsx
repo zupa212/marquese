@@ -92,7 +92,7 @@ export const Navbar = () => {
                         className="p-2 text-brand-ivory hover:text-brand-gold transition-colors"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
-                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        <Menu size={24} />
                     </button>
                 </div>
             </div>
