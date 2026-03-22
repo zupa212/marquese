@@ -1,5 +1,9 @@
-import React from 'react';
+"use client";
+
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 interface ParallaxDividerProps {
     imageSrc: string;
@@ -9,28 +13,46 @@ interface ParallaxDividerProps {
 
 export const ParallaxDivider = ({
     imageSrc,
-    height = "h-96 md:h-[30rem]",
+    height = "h-[40vh] md:h-[60vh]",
     className
 }: ParallaxDividerProps) => {
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start end", "end start"]
+    });
+
+    // Move the image from -15% to 15% to create a deep parallax effect
+    const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
     return (
         <div
+            ref={ref}
             className={cn(
-                "w-full relative overflow-hidden my-20",
+                "w-full relative overflow-hidden my-24",
                 height,
                 className
             )}
-            // Use clip-path to create the diagonal top and bottom cuts
             style={{
-                clipPath: 'polygon(0 8%, 100% 0, 100% 92%, 0 100%)'
+                clipPath: 'polygon(0 10%, 100% 0, 100% 90%, 0 100%)'
             }}
         >
-            {/* The element holding the parallax background */}
-            <div
-                className="absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-center bg-fixed transform scale-125"
-                style={{ backgroundImage: `url(${imageSrc})` }}
-            />
-            {/* Optional overlay to darken/tint the image slightly so it blends nicely */}
-            <div className="absolute inset-0 bg-brand-charcoal/20" />
+            <motion.div
+                style={{ y }}
+                className="absolute inset-0 w-full h-[140%] -top-[20%]"
+            >
+                <Image
+                    src={imageSrc}
+                    alt="Marquise Barber Shop Parallax"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+            </motion.div>
+            
+            {/* Elegant Vignette Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-brand-charcoal/40 via-transparent to-brand-charcoal/40" />
+            <div className="absolute inset-0 bg-brand-charcoal/10" />
         </div>
     );
 };
