@@ -85,31 +85,6 @@ export const Hero = () => {
                         </Link>
                     </motion.div>
 
-                    {/* Floating Phone Badge with Parallax and Square Bottom */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 1.2 }}
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -600]) }}
-                        className="mt-16 inline-block w-full sm:w-auto"
-                    >
-                        <a 
-                            href={BUSINESS_INFO.phoneClick}
-                            onClick={() => track('call', 'Hero Floating Badge')}
-                            className="flex items-center space-x-6 bg-brand-gold text-brand-charcoal px-10 py-8 md:px-12 md:py-8 rounded-t-[3rem] rounded-b-none shadow-[0_-20px_60px_rgba(212,175,55,0.4)] hover:scale-105 transition-transform group relative overflow-hidden"
-                        >
-                            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            <div className="bg-brand-charcoal/10 p-4 rounded-2xl group-hover:bg-brand-charcoal/20 transition-colors">
-                                <Phone size={32} className="animate-pulse" />
-                            </div>
-                            <div className="flex flex-col">
-                                <span className="text-xs uppercase tracking-[0.4em] font-black opacity-60 leading-none mb-2">
-                                    {language === 'el' ? 'ΚΛΕΙΣΕ ΡΑΝΤΕΒΟΥ / DIRECT LINE' : 'BOOK APPOINTMENT / DIRECT LINE'}
-                                </span>
-                                <span className="text-2xl md:text-4xl font-serif font-bold tracking-tight">{BUSINESS_INFO.phone}</span>
-                            </div>
-                        </a>
-                    </motion.div>
                 </motion.div>
             </div>
 
