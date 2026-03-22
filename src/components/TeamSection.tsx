@@ -55,11 +55,13 @@ export const TeamSection = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="px-4">
-                            <p className="text-white/60 font-light leading-relaxed text-center group-hover:text-white/90 transition-colors">
-                                {barber.bio}
-                            </p>
-                        </div>
+                        {barber.bio && (
+                            <div className="px-4">
+                                <p className="text-white/60 font-light leading-relaxed text-center group-hover:text-white/90 transition-colors">
+                                    {barber.bio}
+                                </p>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>
