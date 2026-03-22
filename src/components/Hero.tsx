@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { buttonVariants } from './ui/Button';
 import { BUSINESS_INFO, BOOKING_URL, GOOGLE_MAPS_URL } from '@/lib/constants';
-import { MapPin, Calendar, Star } from 'lucide-react';
+import { MapPin, Calendar, Star, Phone } from 'lucide-react';
 import { useTrackClick } from '@/hooks/useTrackClick';
 import { useLanguage } from '@/hooks/useLanguage';
 
@@ -125,6 +125,29 @@ export const Hero = () => {
                             <span className="text-brand-gold font-serif text-xl md:text-2xl font-bold">Premium</span>
                             <span className="text-brand-ivory/50 text-[10px] uppercase tracking-widest text-wrap">Experience</span>
                         </div>
+                    </motion.div>
+
+                    {/* Floating Phone Badge with Parallax and Square Bottom */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 1.2 }}
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -150]) }}
+                        className="mt-12 inline-block"
+                    >
+                        <a 
+                            href={BUSINESS_INFO.phoneClick}
+                            onClick={() => track('call', 'Hero Floating Badge')}
+                            className="flex items-center space-x-4 bg-brand-gold text-brand-charcoal px-8 py-4 rounded-t-3xl rounded-b-none shadow-[0_-10px_40px_rgba(212,175,55,0.3)] hover:scale-105 transition-transform group"
+                        >
+                            <div className="bg-brand-charcoal/10 p-2 rounded-lg group-hover:bg-brand-charcoal/20 transition-colors">
+                                <Phone size={20} className="animate-pulse" />
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="text-[10px] uppercase tracking-[0.2em] font-black opacity-60 leading-none mb-1">Direct Line</span>
+                                <span className="text-lg md:text-xl font-serif font-bold tracking-tight">{BUSINESS_INFO.phone}</span>
+                            </div>
+                        </a>
                     </motion.div>
                 </motion.div>
             </div>
