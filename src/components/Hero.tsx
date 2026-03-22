@@ -51,18 +51,6 @@ export const Hero = () => {
 
             <div className="container mx-auto px-6 relative z-20 pt-20">
                 <motion.div style={{ opacity }} className="max-w-3xl">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="inline-flex items-center space-x-2 bg-brand-gold/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-brand-gold/30"
-                    >
-                        <Star className="text-brand-gold fill-brand-gold" size={14} />
-                        <span className="text-brand-ivory text-xs font-bold uppercase tracking-widest">
-                            {BUSINESS_INFO.reviewCount} {language === 'el' ? 'Αξιολογήσεις' : 'Reviews'} • 5.0 {language === 'el' ? 'Αστέρια' : 'Stars'}
-                        </span>
-                    </motion.div>
-
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -90,41 +78,11 @@ export const Hero = () => {
                         <Link
                             href={BOOKING_URL || BUSINESS_INFO.phoneClick}
                             onClick={() => track('booking', 'Hero CTA')}
-                            className={buttonVariants({ variant: 'gold', size: 'lg', className: 'group' })}
+                            className={buttonVariants({ variant: 'gold', size: 'lg', className: 'group px-12 py-8 text-xl' })}
                         >
-                            <Calendar className="mr-2 group-hover:rotate-12 transition-transform" size={20} />
-                            {BOOKING_URL ? (language === 'el' ? "Κάντε κράτηση online" : "Book online") : (language === 'el' ? "Κλήση για ραντεβού" : "Call for appointment")}
+                            <Calendar className="mr-3 group-hover:rotate-12 transition-transform" size={24} />
+                            {BOOKING_URL ? (language === 'el' ? "Κλείσε Ραντεβού" : "Book appointment") : (language === 'el' ? "Κλήση για ραντεβού" : "Call for appointment")}
                         </Link>
-                        <Link
-                            href={GOOGLE_MAPS_URL}
-                            target="_blank"
-                            onClick={() => track('directions', 'Hero Directions')}
-                            className={buttonVariants({ variant: 'outline', size: 'lg', className: 'border-brand-ivory text-brand-ivory hover:bg-brand-ivory hover:text-brand-charcoal' })}
-                        >
-                            <MapPin className="mr-2" size={20} />
-                            {language === 'el' ? "Οδηγίες" : "Directions"}
-                        </Link>
-                    </motion.div>
-
-                    {/* Trust Row */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 1 }}
-                        className="mt-16 grid grid-cols-2 sm:grid-cols-3 gap-8 border-t border-brand-ivory/10 pt-8 max-w-2xl"
-                    >
-                        <div className="flex flex-col">
-                            <span className="text-brand-gold font-serif text-xl md:text-2xl font-bold">Κηφισιά</span>
-                            <span className="text-brand-ivory/50 text-[10px] uppercase tracking-widest text-wrap">Τοποθεσία</span>
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-brand-gold font-serif text-xl md:text-2xl font-bold">Online</span>
-                            <span className="text-brand-ivory/50 text-[10px] uppercase tracking-widest text-wrap">Booking</span>
-                        </div>
-                        <div className="flex flex-col col-span-2 sm:col-span-1 border-t border-brand-ivory/5 sm:border-0 pt-4 sm:pt-0">
-                            <span className="text-brand-gold font-serif text-xl md:text-2xl font-bold">Premium</span>
-                            <span className="text-brand-ivory/50 text-[10px] uppercase tracking-widest text-wrap">Experience</span>
-                        </div>
                     </motion.div>
 
                     {/* Floating Phone Badge with Parallax and Square Bottom */}
