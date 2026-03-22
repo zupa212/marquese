@@ -40,14 +40,15 @@ export function HomeContent() {
                     </Link>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar lg:grid lg:grid-cols-4 lg:gap-8 gap-6 -mx-6 px-6 lg:mx-0 lg:px-0">
                     {previewServices.map((service, index) => (
-                        <ServiceCard
-                            key={service.name}
-                            name={language === 'el' ? service.name : service.nameEn}
-                            description={language === 'el' ? service.description : service.descriptionEn}
-                            index={index}
-                        />
+                        <div key={service.name} className="min-w-[80vw] sm:min-w-[45vw] lg:min-w-0 snap-center">
+                            <ServiceCard
+                                name={language === 'el' ? service.name : service.nameEn}
+                                description={language === 'el' ? service.description : service.descriptionEn}
+                                index={index}
+                            />
+                        </div>
                     ))}
                 </div>
             </Section>
