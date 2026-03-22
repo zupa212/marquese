@@ -1,5 +1,7 @@
 "use client";
 
+import React, { useRef, useEffect } from 'react';
+
 import { Layout } from "@/components/Layout";
 import Image from "next/image";
 import { Hero } from "@/components/Hero";
@@ -20,6 +22,30 @@ import { HorizontalGallery } from "@/components/HorizontalGallery";
 export function HomeContent() {
     const { t, language } = useLanguage();
     const previewServices = SERVICES.slice(0, 4);
+    const scrollRef = useRef<HTMLDivElement>(null);
+
+    // Auto-scroll logic for services
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (scrollRef.current) {
+                const container = scrollRef.current;
+                
+                // Only auto-scroll if we are actually in a scrolling layout (mobile/tablet)
+                if (container.scrollWidth <= container.clientWidth) return;
+
+                const scrollAmount = container.clientWidth * 0.85; // Move by card width
+                const maxScroll = container.scrollWidth - container.clientWidth;
+                
+                if (container.scrollLeft >= maxScroll - 10) {
+                    container.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                }
+            }
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <Layout>
@@ -40,7 +66,10 @@ export function HomeContent() {
                     </Link>
                 </div>
 
-                <div className="flex overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar lg:grid lg:grid-cols-4 lg:gap-8 gap-6 -mx-6 px-6 lg:mx-0 lg:px-0">
+                <div 
+                    ref={scrollRef}
+                    className="flex overflow-x-auto pb-8 snap-x snap-mandatory lg:grid lg:grid-cols-4 lg:gap-8 gap-6 -mx-6 px-6 lg:mx-0 lg:px-0 [ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                >
                     {previewServices.map((service, index) => (
                         <div key={service.name} className="min-w-[80vw] sm:min-w-[45vw] lg:min-w-0 snap-center">
                             <ServiceCard
