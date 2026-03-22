@@ -13,7 +13,7 @@ interface ParallaxDividerProps {
 
 export const ParallaxDivider = ({
     imageSrc,
-    height = "h-[40vh] md:h-[60vh]",
+    height = "h-[50vh] md:h-[75vh]",
     className
 }: ParallaxDividerProps) => {
     const ref = useRef(null);
