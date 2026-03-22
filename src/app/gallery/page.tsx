@@ -25,11 +25,14 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
     const images = [
+        { src: "/images/gallery/photo_2026-03-22_13-12-30.jpg", title: "Premium Fade" },
+        { src: "/images/gallery/photo_2_2026-03-22_13-22-47.jpg", title: "Barber Craft" },
+        { src: "/images/gallery/photo_3_2026-03-22_13-22-47.jpg", title: "Style & Precision" },
+        { src: "/images/gallery/photo_4_2026-03-22_13-22-47.jpg", title: "Classic Finish" },
+        { src: "/images/gallery/shop-interior-1.jpg", title: "The Marquise Experience" },
+        { src: "/images/gallery/shop-3.jpg", title: "Interior Details" },
         { src: "/images/gallery/apostolis.jpg", title: "Master Barber" },
         { src: "/images/gallery/aggelos.jpg", title: "Senior Barber" },
-        { src: "/images/gallery/shop-1.jpg", title: "Shop Interior" },
-        { src: "/images/gallery/shop-2.jpg", title: "Premium Style" },
-        { src: "/images/gallery/shop-3.jpg", title: "Detailing" },
         { src: "/images/IMG_20260226_202229_00_041.jpg", title: "Marquise View" },
     ];
 

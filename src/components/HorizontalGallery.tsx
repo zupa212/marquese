@@ -5,11 +5,14 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const images = [
+    "/images/gallery/photo_2026-03-22_13-12-30.jpg",
+    "/images/gallery/photo_2_2026-03-22_13-22-47.jpg",
+    "/images/gallery/photo_3_2026-03-22_13-22-47.jpg",
+    "/images/gallery/photo_4_2026-03-22_13-22-47.jpg",
+    "/images/gallery/shop-interior-1.jpg",
+    "/images/gallery/shop-3.jpg",
     "/images/gallery/apostolis.jpg",
     "/images/gallery/aggelos.jpg",
-    "/images/gallery/shop-1.jpg",
-    "/images/gallery/shop-2.jpg",
-    "/images/gallery/shop-3.jpg",
 ];
 
 export const HorizontalGallery = () => {

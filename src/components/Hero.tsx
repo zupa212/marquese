@@ -19,7 +19,7 @@ export const Hero = () => {
         offset: ["start start", "end start"]
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
     return (
@@ -33,7 +33,7 @@ export const Hero = () => {
                         muted
                         playsInline
                         poster="/images/IMG_20260226_202229_00_041.jpg"
-                        className="w-full h-full object-cover scale-110"
+                        className="w-full h-full object-cover scale-125"
                     >
                         <source src="/videos/barber-edit-final.mp4" type="video/mp4" />
                         {/* Fallback Image */}
@@ -42,7 +42,7 @@ export const Hero = () => {
                             alt={language === 'el' ? "Premium Ανδρικό Κουρείο Marquise Barber Shop στην Κηφισιά" : "Premium Marquise Barber Shop in Kifisia"}
                             fill
                             priority
-                            className="object-cover object-center scale-110"
+                            className="object-cover object-center scale-125"
                         />
                     </video>
                 </div>
@@ -50,7 +50,7 @@ export const Hero = () => {
             </motion.div>
 
             <div className="container mx-auto px-6 relative z-20 pt-20">
-                <motion.div style={{ opacity }} className="max-w-3xl">
+                <motion.div style={{ opacity }} className="max-w-4xl">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
-                        className="flex flex-col sm:flex-row gap-4"
+                        className="hidden md:flex flex-col sm:flex-row gap-4"
                     >
                         <Link
                             href={BOOKING_URL || BUSINESS_INFO.phoneClick}
@@ -90,20 +90,22 @@ export const Hero = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 1.2 }}
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -350]) }}
-                        className="mt-16 inline-block"
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [0, -400]) }}
+                        className="mt-16 inline-block w-full sm:w-auto"
                     >
                         <a 
                             href={BUSINESS_INFO.phoneClick}
                             onClick={() => track('call', 'Hero Floating Badge')}
-                            className="flex items-center space-x-6 bg-brand-gold text-brand-charcoal px-12 py-8 rounded-t-[3rem] rounded-b-none shadow-[0_-20px_60px_rgba(212,175,55,0.4)] hover:scale-105 transition-transform group relative overflow-hidden"
+                            className="flex items-center space-x-6 bg-brand-gold text-brand-charcoal px-10 py-8 md:px-12 md:py-8 rounded-t-[3rem] rounded-b-none shadow-[0_-20px_60px_rgba(212,175,55,0.4)] hover:scale-105 transition-transform group relative overflow-hidden"
                         >
                             <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <div className="bg-brand-charcoal/10 p-4 rounded-2xl group-hover:bg-brand-charcoal/20 transition-colors">
                                 <Phone size={32} className="animate-pulse" />
                             </div>
                             <div className="flex flex-col">
-                                <span className="text-xs uppercase tracking-[0.4em] font-black opacity-60 leading-none mb-2">Direct Line</span>
+                                <span className="text-xs uppercase tracking-[0.4em] font-black opacity-60 leading-none mb-2">
+                                    {language === 'el' ? 'ΚΛΕΙΣΕ ΡΑΝΤΕΒΟΥ / DIRECT LINE' : 'BOOK APPOINTMENT / DIRECT LINE'}
+                                </span>
                                 <span className="text-2xl md:text-4xl font-serif font-bold tracking-tight">{BUSINESS_INFO.phone}</span>
                             </div>
                         </a>
