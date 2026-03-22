@@ -25,12 +25,12 @@ export const metadata: Metadata = {
 
 export default function GalleryPage() {
     const images = [
-        { src: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1471&auto=format&fit=crop", title: "Premium Cuts" },
-        { src: "https://images.unsplash.com/photo-1599351431247-f132f017154c?q=80&w=687&auto=format&fit=crop", title: "Detail Work" },
-        { src: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1470&auto=format&fit=crop", title: "Traditional Shave" },
-        { src: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1470&auto=format&fit=crop", title: "Hair Treatment" },
-        { src: "https://images.unsplash.com/photo-1622286332308-0d74622cd2aa?q=80&w=1470&auto=format&fit=crop", title: "Modern Style" },
-        { src: "https://images.unsplash.com/photo-1593702275687-f8b402bf1fb5?q=80&w=1470&auto=format&fit=crop", title: "Beard Care" },
+        { src: "/images/gallery/apostolis.jpg", title: "Master Barber" },
+        { src: "/images/gallery/aggelos.jpg", title: "Senior Barber" },
+        { src: "/images/gallery/shop-1.jpg", title: "Shop Interior" },
+        { src: "/images/gallery/shop-2.jpg", title: "Premium Style" },
+        { src: "/images/gallery/shop-3.jpg", title: "Detailing" },
+        { src: "/images/IMG_20260226_202229_00_041.jpg", title: "Marquise View" },
     ];
 
     return (

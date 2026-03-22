@@ -32,13 +32,13 @@ export const Hero = () => {
                         loop
                         muted
                         playsInline
-                        poster="/images/hero.png"
+                        poster="/images/IMG_20260226_202229_00_041.jpg"
                         className="w-full h-full object-cover scale-110"
                     >
                         <source src="/videos/barber-edit-final.mp4" type="video/mp4" />
                         {/* Fallback Image */}
                         <Image
-                            src="/images/hero.png"
+                            src="/images/IMG_20260226_202229_00_041.jpg"
                             alt={language === 'el' ? "Premium Ανδρικό Κουρείο Marquise Barber Shop στην Κηφισιά" : "Premium Marquise Barber Shop in Kifisia"}
                             fill
                             priority

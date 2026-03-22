@@ -5,11 +5,11 @@ import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const images = [
-    "https://images.unsplash.com/photo-1599351431247-f132f017154c?q=80&w=1470&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1470&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1470&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1593702281257-233974514da7?q=80&w=1470&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1512690196236-40742d939e92?q=80&w=1470&auto=format&fit=crop",
+    "/images/gallery/apostolis.jpg",
+    "/images/gallery/aggelos.jpg",
+    "/images/gallery/shop-1.jpg",
+    "/images/gallery/shop-2.jpg",
+    "/images/gallery/shop-3.jpg",
 ];
 
 export const HorizontalGallery = () => {
