@@ -88,28 +88,6 @@ export function HomeContent() {
             {/* 360 Virtual Tour */}
             <VirtualTour src="/images/IMG_20260226_202229_00_041.jpg" />
 
-            {/* Signature Experiences - Dark Mode Island */}
-            <Section dark id="signature" rounded>
-                <div className="text-center mb-24">
-                    <span className="text-brand-gold font-serif text-lg italic tracking-widest uppercase mb-4 block underline underline-offset-8 decoration-brand-gold/20">{t.homepage.signatureLabel}</span>
-                    <h2 className="text-4xl md:text-6xl font-serif font-bold text-brand-ivory italic">{t.homepage.signatureTitle}</h2>
-                </div>
-
-                <div className="space-y-40">
-                    <SignatureExperience
-                        title={t.homepage.signatureShaveTitle}
-                        description={t.homepage.signatureShaveDesc}
-                        image="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1470&auto=format&fit=crop"
-                    />
-
-                    <SignatureExperience
-                        title={t.homepage.signatureDetoxTitle}
-                        description={t.homepage.signatureDetoxDesc}
-                        image="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=1470&auto=format&fit=crop"
-                        reverse
-                    />
-                </div>
-            </Section>
 
             {/* Team Section */}
             <TeamSection />
